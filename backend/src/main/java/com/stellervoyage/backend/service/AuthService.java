@@ -24,7 +24,6 @@ public class AuthService {
 
     /**
      * This method registers users in the system
-     *
      * @param request : RegistrationRequest
      * @return LoginResponse
      */
@@ -44,7 +43,6 @@ public class AuthService {
 
     /**
      * This method authenticates users
-     *
      * @param request : LoginRequest
      * @return LoginResponse
      */
