@@ -14,10 +14,8 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegistrationRequest {
-    @NotBlank(message = "firstname is required")
-    private String firstname;
-    @NotBlank(message = "lastname is required")
-    private String lastname;
+    @NotBlank(message = "name is required")
+    private String name;
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
     private String email;
