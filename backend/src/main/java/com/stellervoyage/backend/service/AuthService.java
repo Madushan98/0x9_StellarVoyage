@@ -1,9 +1,9 @@
 package com.stellervoyage.backend.service;
 
 import com.stellervoyage.backend.config.JwtService;
-import com.stellervoyage.backend.dto.LoginRequest;
-import com.stellervoyage.backend.dto.LoginResponse;
-import com.stellervoyage.backend.dto.RegistrationRequest;
+import com.stellervoyage.backend.dto.user.LoginRequest;
+import com.stellervoyage.backend.dto.user.LoginResponse;
+import com.stellervoyage.backend.dto.user.RegistrationRequest;
 import com.stellervoyage.backend.exceptions.UserAlreadyExistsException;
 import com.stellervoyage.backend.model.Role;
 import com.stellervoyage.backend.model.User;

@@ -1,8 +1,8 @@
 package com.stellervoyage.backend.controller;
 
-import com.stellervoyage.backend.dto.LoginRequest;
-import com.stellervoyage.backend.dto.LoginResponse;
-import com.stellervoyage.backend.dto.RegistrationRequest;
+import com.stellervoyage.backend.dto.user.LoginRequest;
+import com.stellervoyage.backend.dto.user.LoginResponse;
+import com.stellervoyage.backend.dto.user.RegistrationRequest;
 import com.stellervoyage.backend.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

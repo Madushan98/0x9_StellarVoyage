@@ -1,7 +1,7 @@
 package com.stellervoyage.backend.controller;
 
-import com.stellervoyage.backend.dto.DestinationRequest;
-import com.stellervoyage.backend.dto.DestinationResponse;
+import com.stellervoyage.backend.dto.destination.DestinationRequest;
+import com.stellervoyage.backend.dto.destination.DestinationResponse;
 import com.stellervoyage.backend.service.DestinationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -1,8 +1,8 @@
 package com.stellervoyage.backend.controller;
 
-import com.stellervoyage.backend.dto.UpdateUserResponse;
-import com.stellervoyage.backend.dto.UserDetailsResponse;
-import com.stellervoyage.backend.dto.UserUpdateRequest;
+import com.stellervoyage.backend.dto.user.UpdateUserResponse;
+import com.stellervoyage.backend.dto.user.UserDetailsResponse;
+import com.stellervoyage.backend.dto.user.UserUpdateRequest;
 import com.stellervoyage.backend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
