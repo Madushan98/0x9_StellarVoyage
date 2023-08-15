@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -15,4 +17,5 @@ public class DestinationResponse {
     private Planet planet;
     private String culture;
     private String touristAttractions;
+    private UUID id;
 }

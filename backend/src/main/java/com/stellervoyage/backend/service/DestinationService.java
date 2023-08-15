@@ -23,7 +23,7 @@ public class DestinationService {
 
     /**
      * get destination details
-     * @param destinationName
+     * @param destinationName 
      * @return DestinationResponse
      */
     public DestinationResponse getDestinationDetails(String destinationName) {
@@ -36,6 +36,7 @@ public class DestinationService {
                 .culture(destination.getCulture())
                 .planet(destination.getPlanet())
                 .touristAttractions(destination.getTouristAttractions())
+                .id(destination.getDestinationId())
                 .build();
     }
 
@@ -55,6 +56,7 @@ public class DestinationService {
                         .planet(destination.getPlanet())
                         .culture(destination.getCulture())
                         .touristAttractions(destination.getTouristAttractions())
+                        .id(destination.getDestinationId())
                         .build()).toList();
     }
 
@@ -72,6 +74,7 @@ public class DestinationService {
                         .planet(destination.getPlanet())
                         .culture(destination.getCulture())
                         .touristAttractions(destination.getTouristAttractions())
+                        .id(destination.getDestinationId())
                         .build()).toList();
     }
 
@@ -90,6 +93,7 @@ public class DestinationService {
                 .culture(request.getCulture())
                 .planet(request.getPlanet())
                 .touristAttractions(request.getTouristAttractions())
+                .destinationId(UUID.randomUUID())
                 .build();
         var savedDestination = destinationRepository.save(destination);
 
@@ -100,6 +104,7 @@ public class DestinationService {
                 .planet(savedDestination.getPlanet())
                 .touristAttractions(savedDestination.getTouristAttractions())
                 .culture(savedDestination.getCulture())
+                .id(destination.getDestinationId())
                 .build();
     }
 }
