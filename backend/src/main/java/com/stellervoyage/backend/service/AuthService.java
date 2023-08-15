@@ -18,6 +18,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -41,15 +43,17 @@ public class AuthService {
         }
 
         var user = User.builder()
+                .userId(UUID.randomUUID())
                 .name(request.getName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
-        userRepository.save(user);
+        var registeredUser = userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
         logger.info("User registered successfully");
         return LoginResponse.builder()
+                .id(registeredUser.getUserId())
                 .accessToken(jwtToken)
                 .build();
     }
@@ -78,6 +82,7 @@ public class AuthService {
         var jwtToken = jwtService.generateToken(user);
         logger.info("User Logged in successfully");
         return LoginResponse.builder()
+                .id(user.getUserId())
                 .accessToken(jwtToken)
                 .build();
     }

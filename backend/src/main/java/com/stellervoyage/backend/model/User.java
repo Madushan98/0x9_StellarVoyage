@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -27,11 +28,13 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ")
     private int id;
     private String name;
-
+    private UUID userId;
     @Email
     @NotBlank
     private String email;
+    @NotBlank
     private String password;
+    private String natId;
     @Enumerated(EnumType.STRING)
     private Role role;
 
