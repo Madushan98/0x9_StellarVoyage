@@ -1,7 +1,6 @@
 package com.stellervoyage.backend.service;
 
 import com.stellervoyage.backend.dto.DestinationResponse;
-import com.stellervoyage.backend.model.Destination;
 import com.stellervoyage.backend.repository.DestinationRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -9,14 +8,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class DestinationService {
-
-    Logger logger = LoggerFactory.getLogger(UserService.class);
     DestinationRepository destinationRepository;
 
     /**
