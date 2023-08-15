@@ -1,7 +1,7 @@
 package com.stellervoyage.backend.service;
 
-import com.stellervoyage.backend.dto.DestinationRequest;
-import com.stellervoyage.backend.dto.DestinationResponse;
+import com.stellervoyage.backend.dto.destination.DestinationRequest;
+import com.stellervoyage.backend.dto.destination.DestinationResponse;
 import com.stellervoyage.backend.exceptions.UserAlreadyExistsException;
 import com.stellervoyage.backend.model.Destination;
 import com.stellervoyage.backend.repository.DestinationRepository;
@@ -19,7 +19,7 @@ import java.util.UUID;
 public class DestinationService {
     private final  DestinationRepository destinationRepository;
 
-    Logger logger = LoggerFactory.getLogger(AuthService.class);
+    Logger logger = LoggerFactory.getLogger(DestinationService.class);
 
     /**
      * get destination details

@@ -1,9 +1,9 @@
 package com.stellervoyage.backend.service;
 
 import com.stellervoyage.backend.config.JwtService;
-import com.stellervoyage.backend.dto.UpdateUserResponse;
-import com.stellervoyage.backend.dto.UserDetailsResponse;
-import com.stellervoyage.backend.dto.UserUpdateRequest;
+import com.stellervoyage.backend.dto.user.UpdateUserResponse;
+import com.stellervoyage.backend.dto.user.UserDetailsResponse;
+import com.stellervoyage.backend.dto.user.UserUpdateRequest;
 import com.stellervoyage.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;

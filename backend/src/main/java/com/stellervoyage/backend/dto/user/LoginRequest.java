@@ -1,4 +1,4 @@
-package com.stellervoyage.backend.dto;
+package com.stellervoyage.backend.dto.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -11,12 +11,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserUpdateRequest {
-    @NotBlank(message = "name is required")
-    private String name;
+public class LoginRequest {
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid email format")
     private String email;
-    private String natId;
-
+    @NotBlank(message = "password is required")
+    private String password;
 }
