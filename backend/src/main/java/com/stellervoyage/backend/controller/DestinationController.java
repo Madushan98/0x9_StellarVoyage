@@ -1,18 +1,14 @@
 package com.stellervoyage.backend.controller;
 
+import com.stellervoyage.backend.dto.DestinationRequest;
 import com.stellervoyage.backend.dto.DestinationResponse;
-import com.stellervoyage.backend.dto.UserDetailsResponse;
 import com.stellervoyage.backend.service.DestinationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/destination")
@@ -20,6 +16,13 @@ import java.util.UUID;
 public class DestinationController {
 
     private final DestinationService service;
+
+    @PostMapping("/create")
+    public ResponseEntity<DestinationResponse> createDestination(
+            @RequestBody @Valid DestinationRequest request
+    ) {
+        return ResponseEntity.ok(service.createDestination(request));
+    }
 
     @GetMapping("/{destination}")
     public ResponseEntity<DestinationResponse> getDestination(
@@ -33,6 +36,11 @@ public class DestinationController {
             @PathVariable String planet
     ) {
         return ResponseEntity.ok(service.getDestinationByPlanet(planet));
+    }
+
+    @GetMapping("/destinations/search")
+    public ResponseEntity<List<DestinationResponse>> searchDestinations(@RequestParam String query) {
+        return ResponseEntity.ok(service.searchDestinations(query));
     }
 
 
