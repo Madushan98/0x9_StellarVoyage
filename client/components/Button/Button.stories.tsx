@@ -23,3 +23,4 @@ export default MyButtonMeta;
 type MyButtonStory = ComponentStory<typeof MyButton>;
 
 export const Basic: MyButtonStory = (args) => <MyButton {...args} />;
+export const Test: MyButtonStory = (args) => <MyButton {...args} text="asdasd" />;
