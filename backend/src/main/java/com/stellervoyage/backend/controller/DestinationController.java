@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/destination")
+@RequestMapping("/api/v1/destinations")
 @RequiredArgsConstructor
 public class DestinationController {
 
@@ -38,10 +38,14 @@ public class DestinationController {
         return ResponseEntity.ok(service.getDestinationByPlanet(planet));
     }
 
-    @GetMapping("/destinations/search")
+    @GetMapping("/search")
     public ResponseEntity<List<DestinationResponse>> searchDestinations(@RequestParam String query) {
         return ResponseEntity.ok(service.searchDestinations(query));
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<DestinationResponse>> getAll() {
+        return ResponseEntity.ok(service.getAllDestinations());
+    }
 
 }

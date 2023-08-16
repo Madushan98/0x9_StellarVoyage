@@ -15,9 +15,9 @@ public interface DestinationRepository extends JpaRepository<Destination, Intege
     Optional<List<Destination>> findByPlanet(String planet);
 
     @Query("SELECT d FROM Destination d WHERE " +
-            "d.name LIKE CONCAT('%', :query, '%') " +
-            "OR d.planet LIKE CONCAT('%', :query, '%') " +
-            "OR d.culture LIKE CONCAT('%', :query, '%') " +
-            "OR d.touristAttractions LIKE CONCAT('%', :query, '%')")
+            "LOWER(d.name) LIKE CONCAT('%', LOWER(:query), '%') " +
+            "OR LOWER(d.planet) LIKE CONCAT('%', LOWER(:query), '%') " +
+            "OR LOWER(d.culture) LIKE CONCAT('%', LOWER(:query), '%') " +
+            "OR LOWER(d.touristAttractions) LIKE CONCAT('%', LOWER(:query), '%')")
     List<Destination> searchDestinations(String query);
 }
