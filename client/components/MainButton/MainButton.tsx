@@ -1,9 +1,10 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import { ButtonModel } from "../../Models/Button";
+import color from "../../config/color";
 
 
-export const MyButton = ({ onPress, text }: ButtonModel) => {
+export const MainButton = ({ onPress, text }: ButtonModel) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Text style={styles.text}>{text}</Text>
@@ -14,10 +15,13 @@ export const MyButton = ({ onPress, text }: ButtonModel) => {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 32,
+    width:"70%",
     paddingVertical: 8,
-    backgroundColor: "purple",
-    alignSelf: "flex-start",
-    borderRadius: 8,
+    backgroundColor: color.mainButton,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius:12,
+    height:42
   },
-  text: { color: "white", fontSize: 16, fontWeight: "bold" },
+  text: { color: "white",fontFamily:"Monserrata", fontSize: 16,fontWeight:"400" },
 });
