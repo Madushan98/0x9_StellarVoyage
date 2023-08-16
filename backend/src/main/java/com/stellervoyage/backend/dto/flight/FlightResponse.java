@@ -16,6 +16,7 @@ public class FlightResponse {
     private String from;
     private String to;
     private Date departureDate;
+    private Date arrivalDate;
     private Date returnDate;
     private TravelMode travelMode;
     private double price;

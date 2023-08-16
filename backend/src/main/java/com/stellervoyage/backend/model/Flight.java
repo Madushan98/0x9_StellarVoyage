@@ -24,7 +24,9 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FLIGHT_SEQ")
     private int id;
     private UUID flightId;
+    @Temporal(TemporalType.DATE)
     private Date departureDate;
+    private Date arrivalTime;
     @Enumerated(EnumType.STRING)
     private TravelMode travelMode;
 

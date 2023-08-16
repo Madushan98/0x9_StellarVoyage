@@ -1,33 +1,32 @@
 package com.stellervoyage.backend.service;
 
-import com.stellervoyage.backend.dto.destination.DestinationResponse;
 import com.stellervoyage.backend.dto.flight.FlightRequest;
 import com.stellervoyage.backend.dto.flight.FlightResponse;
+import com.stellervoyage.backend.dto.flight.FlightSearchRequest;
 import com.stellervoyage.backend.exceptions.NoSuchElementFoundException;
-import com.stellervoyage.backend.exceptions.UserAlreadyExistsException;
 import com.stellervoyage.backend.model.Destination;
 import com.stellervoyage.backend.model.Flight;
-import com.stellervoyage.backend.model.TravelMode;
 import com.stellervoyage.backend.repository.DestinationRepository;
 import com.stellervoyage.backend.repository.FlightRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class FlightService {
 
-    private FlightRepository flightRepository;
-    private DestinationRepository destinationRepository;
+    private final FlightRepository flightRepository;
+    private final DestinationRepository destinationRepository;
     Logger logger = LoggerFactory.getLogger(FlightService.class);
 
     /**
      * get Flight details using flight name
+     *
      * @param flightId
      * @return FlightResponse
      */
@@ -41,6 +40,7 @@ public class FlightService {
 
     /**
      * create flight using the flight request details
+     *
      * @param request
      * @return FlightResponse
      */
@@ -51,17 +51,23 @@ public class FlightService {
         Destination toDestination = destinationRepository.findByName(request.getTo()).orElseThrow(
                 () -> new NoSuchElementFoundException("No Destination is available by the name %s ".formatted(request.getTo())));
 
-        var flight = mapRequestToFlight(request,fromDestination,toDestination);
+        var flight = mapRequestToFlight(request, fromDestination, toDestination);
         var savedFlight = flightRepository.save(flight);
         logger.info("Flight Details saved successfully");
         return mapFlightToResponse(savedFlight);
     }
 
-    public FlightResponse mapFlightToResponse(Flight flight){
-       return FlightResponse.builder()
+    /**
+     * Flight model Convert to FlightResponse
+     * @param flight
+     * @return FlightResponse
+     */
+    public FlightResponse mapFlightToResponse(Flight flight) {
+        return FlightResponse.builder()
                 .from(flight.getFrom().getName())
                 .to(flight.getTo().getName())
                 .departureDate(flight.getDepartureDate())
+                .arrivalDate(flight.getArrivalTime())
                 .returnDate(flight.getReturnDate())
                 .totalSeats(flight.getTotalSeats())
                 .travelMode(flight.getTravelMode())
@@ -69,8 +75,8 @@ public class FlightService {
                 .build();
     }
 
-    public Flight mapRequestToFlight(FlightRequest request, Destination from, Destination to){
-        return  Flight.builder()
+    public Flight mapRequestToFlight(FlightRequest request, Destination from, Destination to) {
+        return Flight.builder()
                 .from(from)
                 .to(to)
                 .travelMode(request.getTravelMode())
@@ -78,8 +84,39 @@ public class FlightService {
                 .availableSeats(40)
                 .totalSeats(40)
                 .departureDate(request.getDepartureDate())
+                .arrivalTime(request.getArrivalTime())
                 .returnDate(request.getReturnDate())
                 .build();
     }
+
+    /**
+     *  Get the Flight based on different search properties
+     * @param request of type FlightSearchRequest
+     * @return List<FlightResponse>
+     */
+    public List<FlightResponse> getFlightResults(FlightSearchRequest request) {
+
+        List<Flight> searchResult = flightRepository
+                .searchFlights(
+                        request.getFromLocation(),
+                        request.getToLocation(),
+                        request.getTravelMode(),
+                        request.getDepartureDate(),
+                        request.getMinAvailableSeats()
+                        );
+
+        return searchResult.stream().map(this::mapFlightToResponse).toList();
+    }
+
+    /**
+     * Get all Fights
+     * @return List of Flight Responses
+     */
+    public List<FlightResponse> getAllFlights() {
+        List<Flight> flights = flightRepository.findAll();
+        return  flights.stream().map(this::mapFlightToResponse
+        ).toList();
+    }
+
 
 }
