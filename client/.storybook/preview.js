@@ -1,6 +1,7 @@
 
 import { addDecorator } from '@storybook/react-native';
 import { loadAsync } from 'expo-font';
+import Ionicons from "@expo/vector-icons/Ionicons"
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -15,6 +16,7 @@ export const parameters = {
 const loadFonts = async () => {
   await loadAsync({
     'Monserrata': require('../assets/fonts/Mon.ttf'),
+    'Mulish': require('../assets/fonts/Mulish.ttf'),
   });
 };
 

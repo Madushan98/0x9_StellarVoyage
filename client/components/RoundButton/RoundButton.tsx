@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     height:32
   },
   text: { fontFamily:"Monserrata", fontSize: 16,fontWeight:"400" },
-  deactive:{backgroundColor:color.deactiveButton},
-  active:{backgroundColor:color.activeButton},
+  deactive:{backgroundColor:color.paperWhite},
+  active:{backgroundColor:color.buttonBlue},
   active_color:{color:"white"},
   deactive_color:{color:"black"}
 });

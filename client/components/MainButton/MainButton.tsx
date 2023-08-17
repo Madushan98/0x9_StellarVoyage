@@ -15,9 +15,9 @@ export const MainButton = ({ onPress, text }: ButtonModel) => {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 32,
-    width:"70%",
+    width:"90%",
     paddingVertical: 8,
-    backgroundColor: color.mainButton,
+    backgroundColor: color.buttonBlue,
     alignItems: "center",
     justifyContent: "center",
     borderRadius:12,
