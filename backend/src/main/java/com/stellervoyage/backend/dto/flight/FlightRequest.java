@@ -10,7 +10,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Data
 @Builder
@@ -19,15 +20,18 @@ import java.util.Date;
 public class FlightRequest {
 
     @Temporal(TemporalType.DATE)
-    private Date departureDate;
+    private LocalDate departureDate;
     @Temporal(TemporalType.DATE)
-    private Date returnDate;
-    private Date departureTime;
+    private LocalDate returnDate;
+    @Temporal(TemporalType.DATE)
+    private LocalDate arrivalDate;
+    @Temporal(TemporalType.TIME)
+    private LocalTime departureTime;
     @Enumerated(EnumType.STRING)
     private TravelMode travelMode;
     private double price;
     private int totalSeats;
     private String from;
     private String to;
-    private Date arrivalTime;
+
 }

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -25,7 +25,7 @@ public interface FlightRepository extends JpaRepository<Flight, Integer>, JpaSpe
             @Param("fromLocation") String fromLocation,
             @Param("toLocation") String toLocation,
             @Param("travelMode") TravelMode travelMode,
-            @Param("departureDate") Date departureDate,
+            @Param("departureDate") LocalDate departureDate,
             @Param("minAvailableSeats") Integer minAvailableSeats
     );
 }
