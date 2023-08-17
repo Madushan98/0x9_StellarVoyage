@@ -24,14 +24,14 @@ public class DestinationController {
         return ResponseEntity.ok(service.createDestination(request));
     }
 
-    @GetMapping("/{destination}")
+    @GetMapping("/destination/{destination}")
     public ResponseEntity<DestinationResponse> getDestination(
             @PathVariable String destination
     ) {
         return ResponseEntity.ok(service.getDestinationDetails(destination));
     }
 
-    @GetMapping("/{planet}")
+    @GetMapping("/planet/{planet}")
     public ResponseEntity<List<DestinationResponse>> getDestinationsByPlanet(
             @PathVariable String planet
     ) {
