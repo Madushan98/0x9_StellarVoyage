@@ -91,6 +91,7 @@ public class DestinationService {
                 .planet(destination.getPlanet())
                 .touristAttractions(destination.getTouristAttractions())
                 .culture(destination.getCulture())
+                .culture(destination.getCulture())
                 .id(destination.getDestinationId())
                 .build();
     }

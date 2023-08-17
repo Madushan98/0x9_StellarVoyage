@@ -25,6 +25,7 @@ public class Destination {
     @Enumerated(EnumType.STRING)
     private Planet planet;
     private String culture;
+    private String climate;
     private String touristAttractions;
 
 }

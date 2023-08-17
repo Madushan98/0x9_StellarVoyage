@@ -18,6 +18,7 @@ public class DestinationRequest {
     private String name;
     @Enumerated(EnumType.STRING)
     private Planet planet;
+    private String climate;
     private String culture;
     private String touristAttractions;
 }
