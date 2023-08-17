@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.util.UUID;
+
 @Entity
 @Data
 @Builder
@@ -20,6 +22,7 @@ public class Booking {
     @SequenceGenerator(name = "BOOKING_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BOOKING_SEQ")
     private int id;
+    private UUID bookingId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
