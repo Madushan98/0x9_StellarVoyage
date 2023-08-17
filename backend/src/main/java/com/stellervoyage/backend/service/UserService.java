@@ -39,7 +39,6 @@ public class UserService {
 
     /**
      * Update User Details
-     *
      * @param id
      * @param request
      * @return UpdateUserResponse
@@ -63,5 +62,4 @@ public class UserService {
                 .accessToken(jwtToken)
                 .build();
     }
-
 }
