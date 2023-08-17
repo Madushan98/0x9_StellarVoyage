@@ -23,7 +23,7 @@ public class DestinationService {
 
     /**
      * get destination details
-     * @param destinationName
+     * @param destinationName 
      * @return DestinationResponse
      */
     public DestinationResponse getDestinationDetails(String destinationName) {
@@ -31,12 +31,7 @@ public class DestinationService {
                 .orElseThrow(() -> new UsernameNotFoundException(
                         "Destination with name - %s does not exist".formatted(destinationName)));
 
-        return DestinationResponse.builder()
-                .name(destination.getName())
-                .culture(destination.getCulture())
-                .planet(destination.getPlanet())
-                .touristAttractions(destination.getTouristAttractions())
-                .build();
+        return mapDestinationToResponse(destination);
     }
 
     /**
@@ -50,12 +45,7 @@ public class DestinationService {
                         "Incorrect Email or User with Uuid - %s does not exist".formatted(planet)));
 
         return  destinations.stream()
-                .map(destination -> DestinationResponse.builder()
-                        .name(destination.getName())
-                        .planet(destination.getPlanet())
-                        .culture(destination.getCulture())
-                        .touristAttractions(destination.getTouristAttractions())
-                        .build()).toList();
+                .map(this::mapDestinationToResponse).toList();
     }
 
     /**
@@ -67,12 +57,7 @@ public class DestinationService {
         var destinations = destinationRepository.searchDestinations(query);
 
         return destinations.stream()
-                .map(destination -> DestinationResponse.builder()
-                        .name(destination.getName())
-                        .planet(destination.getPlanet())
-                        .culture(destination.getCulture())
-                        .touristAttractions(destination.getTouristAttractions())
-                        .build()).toList();
+                .map(this::mapDestinationToResponse).toList();
     }
 
     /**
@@ -84,22 +69,39 @@ public class DestinationService {
         if (destinationRepository.existsByName(request.getName())) {
             throw new UserAlreadyExistsException("Destination %s already exists".formatted(request.getName()));
         }
-        var destination = Destination.builder()
+        var destination = mapRequestToDestination(request);
+        var savedDestination = destinationRepository.save(destination);
+
+        logger.info("Destination saved successfully");
+
+        return mapDestinationToResponse(savedDestination);
+    }
+
+    public List<DestinationResponse> getAllDestinations() {
+        List<Destination> destinations = destinationRepository.findAll();
+        return destinations.stream().map(this::mapDestinationToResponse
+                ).toList();
+    }
+
+    public DestinationResponse mapDestinationToResponse(Destination destination){
+        return DestinationResponse.builder()
+                .name(destination.getName())
+                .planet(destination.getPlanet())
+                .touristAttractions(destination.getTouristAttractions())
+                .culture(destination.getCulture())
+                .id(destination.getDestinationId())
+                .build();
+    }
+
+    public Destination mapRequestToDestination(DestinationRequest request){
+        return  Destination.builder()
                 .destinationId(UUID.randomUUID())
                 .name(request.getName())
                 .culture(request.getCulture())
                 .planet(request.getPlanet())
                 .touristAttractions(request.getTouristAttractions())
-                .build();
-        var savedDestination = destinationRepository.save(destination);
-
-        logger.info("Destination saved successfully");
-
-        return DestinationResponse.builder()
-                .name(savedDestination.getName())
-                .planet(savedDestination.getPlanet())
-                .touristAttractions(savedDestination.getTouristAttractions())
-                .culture(savedDestination.getCulture())
+                .destinationId(UUID.randomUUID())
                 .build();
     }
+
 }
