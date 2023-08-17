@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 42,
     width:"90%",
     paddingVertical: 8,
-    backgroundColor: color.deactiveButton,
+    backgroundColor: color.paperWhite,
     alignItems: "center",
     justifyContent: "space-between",
     borderRadius:12,
