@@ -5,7 +5,7 @@ import icon from "../../config/icon"
 import { PricingCard } from "./PricingCard";
 
 const MyButtonMeta: ComponentMeta<typeof PricingCard> = {
-  title: "PlanetCar",
+  title: "PricingCard",
   component: PricingCard,
   args: {
     title: "Login with Google",
@@ -24,5 +24,5 @@ export default MyButtonMeta;
 
 type MyButtonStory = ComponentStory<typeof PricingCard>;
 
-export const MianPlanetCard: MyButtonStory = (args) => <PricingCard {...args}  />;
+export const MainPricingCard: MyButtonStory = (args) => <PricingCard   />;
 

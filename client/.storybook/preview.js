@@ -15,6 +15,7 @@ export const parameters = {
 const loadFonts = async () => {
   await loadAsync({
     'Monserrata': require('../assets/fonts/Mon.ttf'),
+    'Mulish': require('../assets/fonts/Mulish.ttf'),
   });
 };
 
