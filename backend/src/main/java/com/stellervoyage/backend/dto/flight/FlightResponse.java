@@ -6,18 +6,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class FlightResponse {
+    private UUID flightId;
     private String from;
     private String to;
-    private Date departureDate;
-    private Date arrivalDate;
-    private Date returnDate;
+    private LocalDate departureDate;
+    private LocalDate arrivalDate;
+    private LocalDate returnDate;
     private TravelMode travelMode;
     private double price;
     private int totalSeats;

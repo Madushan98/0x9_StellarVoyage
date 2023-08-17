@@ -1,6 +1,7 @@
 package com.stellervoyage.backend.repository;
 
 import com.stellervoyage.backend.model.Destination;
+import com.stellervoyage.backend.model.Planet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -12,7 +13,7 @@ public interface DestinationRepository extends JpaRepository<Destination, Intege
 
     boolean existsByName(String name);
 
-    Optional<List<Destination>> findByPlanet(String planet);
+    Optional<List<Destination>> findByPlanet(Planet planet);
 
     @Query("SELECT d FROM Destination d WHERE " +
             "LOWER(d.name) LIKE CONCAT('%', LOWER(:query), '%') " +

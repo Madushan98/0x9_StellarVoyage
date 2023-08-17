@@ -46,6 +46,7 @@ public class AuthService {
                 .userId(UUID.randomUUID())
                 .name(request.getName())
                 .email(request.getEmail())
+                .natId(request.getNatId())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();

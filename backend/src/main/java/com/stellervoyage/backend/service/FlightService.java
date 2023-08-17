@@ -64,13 +64,15 @@ public class FlightService {
      */
     public FlightResponse mapFlightToResponse(Flight flight) {
         return FlightResponse.builder()
+                .flightId(flight.getFlightId())
                 .from(flight.getFrom().getName())
                 .to(flight.getTo().getName())
                 .departureDate(flight.getDepartureDate())
-                .arrivalDate(flight.getArrivalTime())
+                .arrivalDate(flight.getArrivalDate())
                 .returnDate(flight.getReturnDate())
                 .totalSeats(flight.getTotalSeats())
                 .travelMode(flight.getTravelMode())
+                .price(flight.getPrice())
                 .availableSeats(flight.getAvailableSeats())
                 .build();
     }
@@ -84,8 +86,10 @@ public class FlightService {
                 .availableSeats(40)
                 .totalSeats(40)
                 .departureDate(request.getDepartureDate())
-                .arrivalTime(request.getArrivalTime())
+                .arrivalDate(request.getArrivalDate())
                 .returnDate(request.getReturnDate())
+                .departureTime(request.getDepartureTime())
+                .price(request.getPrice())
                 .build();
     }
 

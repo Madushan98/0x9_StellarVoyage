@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.UUID;
 
 @Data
@@ -25,8 +26,9 @@ public class Flight {
     private int id;
     private UUID flightId;
     @Temporal(TemporalType.DATE)
-    private Date departureDate;
-    private Date arrivalTime;
+    private LocalDate departureDate;
+    private LocalTime departureTime;
+    private LocalDate arrivalDate;
     @Enumerated(EnumType.STRING)
     private TravelMode travelMode;
 
@@ -41,5 +43,6 @@ public class Flight {
     private double price;
     private int availableSeats;
     private int totalSeats;
-    private Date returnDate;
+    @Temporal(TemporalType.DATE)
+    private LocalDate returnDate;
 }

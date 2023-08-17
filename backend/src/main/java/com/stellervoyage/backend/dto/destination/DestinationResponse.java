@@ -16,6 +16,7 @@ public class DestinationResponse {
     private String name;
     private Planet planet;
     private String culture;
+    private String climate;
     private String touristAttractions;
     private UUID id;
 }
