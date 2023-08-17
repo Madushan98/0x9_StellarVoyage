@@ -64,6 +64,7 @@ public class FlightService {
      */
     public FlightResponse mapFlightToResponse(Flight flight) {
         return FlightResponse.builder()
+                .flightId(flight.getFlightId())
                 .from(flight.getFrom().getName())
                 .to(flight.getTo().getName())
                 .departureDate(flight.getDepartureDate())

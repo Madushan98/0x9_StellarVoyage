@@ -7,12 +7,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class FlightResponse {
+    private UUID flightId;
     private String from;
     private String to;
     private LocalDate departureDate;

@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -19,6 +20,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 public class FlightRequest {
 
+    private UUID flightId;
     @Temporal(TemporalType.DATE)
     private LocalDate departureDate;
     @Temporal(TemporalType.DATE)
