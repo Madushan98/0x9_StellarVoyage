@@ -101,6 +101,7 @@ public class DestinationService {
                 .destinationId(UUID.randomUUID())
                 .name(request.getName())
                 .culture(request.getCulture())
+                .climate(request.getClimate())
                 .planet(request.getPlanet())
                 .touristAttractions(request.getTouristAttractions())
                 .destinationId(UUID.randomUUID())
