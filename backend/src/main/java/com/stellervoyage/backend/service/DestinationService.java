@@ -4,6 +4,7 @@ import com.stellervoyage.backend.dto.destination.DestinationRequest;
 import com.stellervoyage.backend.dto.destination.DestinationResponse;
 import com.stellervoyage.backend.exceptions.UserAlreadyExistsException;
 import com.stellervoyage.backend.model.Destination;
+import com.stellervoyage.backend.model.Planet;
 import com.stellervoyage.backend.repository.DestinationRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -40,7 +41,8 @@ public class DestinationService {
      * @return List<DestinationResponse>
      */
     public List<DestinationResponse> getDestinationByPlanet(String planet) {
-        var destinations = destinationRepository.findByPlanet(planet)
+
+        var destinations = destinationRepository.findByPlanet(Planet.valueOf(planet))
                 .orElseThrow(() -> new UsernameNotFoundException(
                         "Incorrect Email or User with Uuid - %s does not exist".formatted(planet)));
 
