@@ -1,9 +1,11 @@
 package com.stellervoyage.backend.controller;
 
-import com.stellervoyage.backend.dto.user.*;
+import com.stellervoyage.backend.dto.user.LoginRequest;
+import com.stellervoyage.backend.dto.user.LoginResponse;
+import com.stellervoyage.backend.dto.user.RegistrationRequest;
+import com.stellervoyage.backend.dto.user.VerificationRequest;
 import com.stellervoyage.backend.service.AuthService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +18,7 @@ public class AuthController {
     private final AuthService service;
 
     @PostMapping("/register")
-    public ResponseEntity<RegistrationResponse> register(
+    public ResponseEntity<LoginResponse> register(
             @RequestBody @Valid RegistrationRequest request
     ) {
         return ResponseEntity.ok(service.register(request));

@@ -41,7 +41,7 @@ public class AuthService {
      * @param request : RegistrationRequest
      * @return LoginResponse
      */
-    public RegistrationResponse register(RegistrationRequest request) {
+    public LoginResponse register(RegistrationRequest request) {
 
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new UserAlreadyExistsException("User with email - %s already exists".formatted(request.getEmail()));
@@ -57,10 +57,19 @@ public class AuthService {
                 .role(Role.USER)
                 .build();
         var registeredUser = userRepository.save(user);
-        sendVerificationEmail(registeredUser);
-        return RegistrationResponse.builder()
-                .message("Verification Email is Sent to Your Email")
-                .build();
+
+        // without email verification
+        return mapUserToLoginResponse(registeredUser);
+
+        /**
+         * Uncomment this code to add email verification service
+         *
+         * sendVerificationEmail(registeredUser);
+         *         return RegistrationResponse.builder()
+         *                 .message("Verification Email is Sent to Your Email")
+         *                 .build();
+         */
+
     }
 
     /**
