@@ -1,5 +1,5 @@
 export interface ButtonModel{
-    text:string,
+    text?:string,
     onPress?: ()=>void;
 }
 

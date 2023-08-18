@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react-native";
 import { View } from "react-native";
 import { BookingDetailCard } from "./BookingDetailCard";
 
-const MyButtonMeta: ComponentMeta<typeof BookingDetailCard> = {
+const BookingDetailCardMeta: ComponentMeta<typeof BookingDetailCard> = {
   title: "BookingDetailCard",
   component: BookingDetailCard,
   args: {
@@ -19,7 +19,7 @@ const MyButtonMeta: ComponentMeta<typeof BookingDetailCard> = {
   ],
 };
 
-export default MyButtonMeta;
+export default BookingDetailCardMeta;
 
 type BookingDetailCardStory = ComponentStory<typeof BookingDetailCard>;
 
