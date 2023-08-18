@@ -32,6 +32,8 @@ public class User implements UserDetails {
     @Email
     @NotBlank
     private String email;
+    private String verificationCode;
+    private boolean enabled;
     @NotBlank
     private String password;
     private String natId;
