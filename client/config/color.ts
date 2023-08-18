@@ -9,5 +9,8 @@ export default {
     destinationDetail:"#C6C29B",
     destinationCardbg:"#1A6069",
     iconButtonbg:"#212542",
-    planetCardBorder:"#212542"
+    planetCardBorder:"#212542",
+    white : 'white',
+    selectdTabColor: '#637aff',
+    bottomBar: '#1E1E1E'
 }
