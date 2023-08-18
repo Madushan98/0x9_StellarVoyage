@@ -1,10 +1,14 @@
 export interface ButtonModel{
     text:string,
-    onPress: ()=>void;
+    onPress?: ()=>void;
 }
 
 export interface RoundButtonModel extends ButtonModel{
     type?: RoundButtonType
+}
+
+export interface ImageButtonModel extends ButtonModel{
+    icon:any
 }
 
 export interface IconButtonModel extends ButtonModel{
