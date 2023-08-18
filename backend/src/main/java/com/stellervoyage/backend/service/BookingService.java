@@ -77,5 +77,10 @@ public class BookingService {
                 .build();
     }
 
+    public List<BookingResponse> getUserBookings(UUID userId) {
+        List<Booking> bookings = bookingRepository.findByUserUserId(userId);
+        return  bookings.stream().map(this::mapBookingToResponse).toList();
+    }
+
 
 }

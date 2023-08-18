@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/booking")
@@ -26,7 +27,16 @@ public class BookingController {
 
     @GetMapping("/all")
     public ResponseEntity<List<BookingResponse>> getAll() {
+
         return ResponseEntity.ok(bookingService.getAllBookings());
+    }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<BookingResponse>> getUserBookings(
+            @PathVariable UUID userId
+    ) {
+
+        return ResponseEntity.ok(bookingService.getUserBookings(userId));
     }
 
 
