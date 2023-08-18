@@ -22,8 +22,8 @@ const MyButtonMeta: ComponentMeta<typeof ImageButton> = {
 
 export default MyButtonMeta;
 
-type MyButtonStory = ComponentStory<typeof ImageButton>;
+type ImageButtonStory = ComponentStory<typeof ImageButton>;
 
-export const GoogleImageButton: MyButtonStory = (args) => <ImageButton {...args}  />;
-export const FacebookImageButton: MyButtonStory = (args) => <ImageButton {...args} text="Login with FaceBook" icon={icon.FaceBookIcon} />;
+export const GoogleImageButton: ImageButtonStory = (args) => <ImageButton {...args}  />;
+export const FacebookImageButton: ImageButtonStory = (args) => <ImageButton {...args} text="Login with FaceBook" icon={icon.FaceBookIcon} />;
 
