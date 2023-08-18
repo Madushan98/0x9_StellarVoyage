@@ -4,7 +4,7 @@ import { View } from "react-native";
 import icon from "../../config/icon"
 import { PricingCard } from "./PricingCard";
 
-const MyButtonMeta: ComponentMeta<typeof PricingCard> = {
+const PricingCardMeat: ComponentMeta<typeof PricingCard> = {
   title: "PricingCard",
   component: PricingCard,
   args: {
@@ -20,9 +20,9 @@ const MyButtonMeta: ComponentMeta<typeof PricingCard> = {
   ],
 };
 
-export default MyButtonMeta;
+export default PricingCardMeat;
 
-type MyButtonStory = ComponentStory<typeof PricingCard>;
+type PricingCardStory = ComponentStory<typeof PricingCard>;
 
-export const MainPricingCard: MyButtonStory = (args) => <PricingCard   />;
+export const MainPricingCard: PricingCardStory = (args) => <PricingCard   />;
 

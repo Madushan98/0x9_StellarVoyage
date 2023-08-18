@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react-native";
 import { View } from "react-native";
 import { PlanetCard } from "./PlanetCard";
 
-const MyButtonMeta: ComponentMeta<typeof PlanetCard> = {
+const PlanetCardMeta: ComponentMeta<typeof PlanetCard> = {
   title: "PlanetCar",
   component: PlanetCard,
   decorators: [
@@ -15,7 +15,7 @@ const MyButtonMeta: ComponentMeta<typeof PlanetCard> = {
   ],
 };
 
-export default MyButtonMeta;
+export default PlanetCardMeta;
 
 type PlanetsCardStory = ComponentStory<typeof PlanetCard>;
 

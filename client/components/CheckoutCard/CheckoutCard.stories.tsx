@@ -4,7 +4,7 @@ import { View } from "react-native";
 import icon from "../../config/icon"
 import { CheckoutCard } from "./CheckoutCard";
 
-const MyButtonMeta: ComponentMeta<typeof CheckoutCard> = {
+const CheckoutCardMeta: ComponentMeta<typeof CheckoutCard> = {
   title: "CheckoutCard",
   component: CheckoutCard,
   decorators: [
@@ -16,7 +16,7 @@ const MyButtonMeta: ComponentMeta<typeof CheckoutCard> = {
   ],
 };
 
-export default MyButtonMeta;
+export default CheckoutCardMeta;
 
 type CheckoutCardStory = ComponentStory<typeof CheckoutCard>;
 
