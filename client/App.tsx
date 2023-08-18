@@ -1,6 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
 import { useFonts } from 'expo-font';
+import { AuthProvider, useAuth } from "./contexts/auth.context";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import Home from "./screens/Home";
+import Login from "./screens/Login";
+import BottomBar from "./screens/BottomBar";
+
+const Stack = createStackNavigator();
 
 function App() {
 
@@ -9,9 +17,25 @@ function App() {
   });
 
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+   <AuthProvider>
+      <Layout></Layout>
+   </AuthProvider>
+  );
+}
+
+export const Layout = () => {
+  const {authState, onLogout} = useAuth();
+  return (
+    <BottomBar/>
+  //  <NavigationContainer>
+  //   <Stack.Navigator>
+  //     {authState?.authenticated ? (
+  //     <Stack.Screen 
+  //       name="Home" 
+  //       component={Home} />): (
+  //     <Stack.Screen name="Login" component={Login} />)}
+  //   </Stack.Navigator>  
+  //  </NavigationContainer>
   );
 }
 
