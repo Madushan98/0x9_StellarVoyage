@@ -18,7 +18,7 @@ const MyButtonMeta: ComponentMeta<typeof CheckoutCard> = {
 
 export default MyButtonMeta;
 
-type MyButtonStory = ComponentStory<typeof CheckoutCard>;
+type CheckoutCardStory = ComponentStory<typeof CheckoutCard>;
 
-export const BasicCheckoutCard: MyButtonStory = () => <CheckoutCard   />;
+export const BasicCheckoutCard: CheckoutCardStory = () => <CheckoutCard   />;
 

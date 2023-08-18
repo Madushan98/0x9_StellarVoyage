@@ -1,6 +1,5 @@
 import React from "react";
 import {Text, StyleSheet,Image,View } from "react-native";
-import { IconButtonModel } from "../../Models/Button";
 import color from "../../config/color";
 import { CardModel } from "../../Models/Card";
 
