@@ -1,28 +1,37 @@
 import React from "react";
-import {Text, StyleSheet,Image,View } from "react-native";
+import {Text, StyleSheet,Image,View, TouchableOpacity } from "react-native";
 import color from "../../config/color";
-import { CardModel } from "../../Models/Card";
+import { ButtonModel } from "../../Models/Button";
+import  planets from '../../config/planetIcon'
 
 
-export const PlanetCard = ({  title, detail }: CardModel) => {
+export const PlanetCard = ({onPress}:ButtonModel) => {
+    const planetKeysArray:string[] = Object.keys(planets);
   return (
     <View style={styles.container}>
-        <Text style={styles.text}>{title}</Text>
-        <Text style={styles.detailText} >{detail}</Text>
+        {planetKeysArray.map((planet)=>(
+            <TouchableOpacity style={{width:"25%",height:42}} onPress={onPress}>
+                 <Image style={{flex:1,width:42,height:42,alignSelf:"center"}} source={planets[planet]}/>
+            </TouchableOpacity>
+        ))}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 32,
+    paddingHorizontal: 12,
     width:"40%",
-    paddingVertical: 16,
-    backgroundColor: color.planetCardColor,
+    paddingVertical: 12,
+    backgroundColor: 'rgba(0, 0, 0, 0.0)',
+    borderColor:color.planetCardBorder,
     alignItems: "center",
-    borderRadius:12,
+    borderRadius:30,
+    borderWidth:2,
     display:"flex",
-    flexDirection:"column"
+    flexDirection:"row",
+    flexWrap:"wrap",
+    justifyContent:"space-around"
   },
   text: { color: "white",fontFamily:"Monserrata", fontSize: 32,fontWeight:"800",marginBottom:8},
   detailText:{color:"white",fontFamily:"Monserrata",fontSize:16,fontWeight:"400"}
