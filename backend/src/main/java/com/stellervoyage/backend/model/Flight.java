@@ -31,6 +31,8 @@ public class Flight {
     private LocalDate arrivalDate;
     @Enumerated(EnumType.STRING)
     private TravelMode travelMode;
+    @Enumerated(EnumType.STRING)
+    private FlightMode flightMode;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "from_location", nullable = false)
