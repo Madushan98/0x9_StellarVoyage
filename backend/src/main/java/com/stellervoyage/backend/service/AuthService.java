@@ -104,6 +104,10 @@ public class AuthService {
         return String.valueOf(verifyCode);
     }
 
+    /**
+     * send email verification code to user's email
+     * @param user
+     */
     private void sendVerificationEmail(User user) {
         String toAddress = user.getEmail();
         String fromAddress = "stellerVoyage@gmail.com";
@@ -129,6 +133,11 @@ public class AuthService {
         mailSender.send(message);
     }
 
+    /**
+     * verify the code for user verification
+     * @param request
+     * @return
+     */
     public LoginResponse verifyEmail(VerificationRequest request) {
         User user = userRepository.findByEmail(request.getUserEmail()).orElseThrow(() -> new UsernameNotFoundException(
                 "Incorrect Email or User with E-mail - %s does not exist".formatted(request.getUserEmail())));
