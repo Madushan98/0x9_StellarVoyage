@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     padding:6,
     outlineWidth: 0,
-
   },
   inputContainer: {
     marginBottom: 20,
