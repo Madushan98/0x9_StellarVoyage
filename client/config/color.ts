@@ -12,5 +12,6 @@ export default {
     planetCardBorder:"#212542",
     white : 'white',
     selectdTabColor: '#637aff',
-    bottomBar: '#1E1E1E'
+    bottomBar: '#1E1E1E',
+    lableInputBorder:"#474A56"
 }

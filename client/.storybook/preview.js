@@ -17,6 +17,8 @@ const loadFonts = async () => {
   await loadAsync({
     'Monserrata': require('../assets/fonts/Mon.ttf'),
     'Mulish': require('../assets/fonts/Mulish.ttf'),
+    'MazzardH':require('../assets/fonts/Mazzard.ttf'),
+    'Mazzard':require('../assets/fonts/MazzardH.ttf')
   });
 };
 

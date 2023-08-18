@@ -5,7 +5,7 @@ import { RoundButton } from "./RoundButton";
 import { RoundButtonType } from "../../Models/Button";
 
 
-const MyButtonMeta: ComponentMeta<typeof RoundButton> = {
+const RoundButtonMeta: ComponentMeta<typeof RoundButton> = {
   title: "RoundButton",
   component: RoundButton,
   args: {
@@ -20,10 +20,10 @@ const MyButtonMeta: ComponentMeta<typeof RoundButton> = {
   ],
 };
 
-export default MyButtonMeta;
+export default RoundButtonMeta;
 
-type MyButtonStory = ComponentStory<typeof RoundButton>;
+type RoundButtonStory = ComponentStory<typeof RoundButton>;
 
-export const Active: MyButtonStory = (args) => <RoundButton {...args} type={RoundButtonType.Active} />;
-export const Deactive: MyButtonStory = (args) => <RoundButton {...args} type={RoundButtonType.Deactive} />;
+export const Active: RoundButtonStory = (args) => <RoundButton {...args} type={RoundButtonType.Active} />;
+export const Deactive: RoundButtonStory = (args) => <RoundButton {...args} type={RoundButtonType.Deactive} />;
 
