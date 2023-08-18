@@ -4,4 +4,10 @@ export default {
     planetCardColor:"#D74652",
     pricingTitle:"#8C778A",
     pricingColor:"#00950F",
+    deviderColor:"#C2B7B7",
+    checkOutTitle:"#5B4658",
+    destinationDetail:"#C6C29B",
+    destinationCardbg:"#1A6069",
+    iconButtonbg:"#212542",
+    planetCardBorder:"#212542"
 }

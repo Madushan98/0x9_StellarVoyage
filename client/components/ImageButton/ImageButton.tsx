@@ -1,35 +1,34 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet,Image } from "react-native";
-import {IconButtonModel } from "../../Models/Button";
+import {ImageButtonModel } from "../../Models/Button";
 import color from "../../config/color";
-import Ionicons from "@expo/vector-icons/Ionicons"
 
 
-
-export const IconButton = ({ onPress, text, icon }: IconButtonModel) => {
+export const ImageButton = ({ onPress, text, icon }: ImageButtonModel) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
+        <Image style={styles.image} source={icon}/>
         <Text style={styles.text}>{text}</Text>
-        <Ionicons style={styles.icon} name={icon}></Ionicons>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
+    paddingHorizontal: 42,
     width:"90%",
     paddingVertical: 8,
-    backgroundColor: color.iconButtonbg,
+    backgroundColor: color.paperWhite,
     alignItems: "center",
     justifyContent: "space-between",
-    borderRadius:16,
+    borderRadius:12,
+    height:42,
     display:"flex",
     flexDirection:"row"
   },
-  text: { color: "white",fontFamily:"Monserrata", fontSize: 10,fontWeight:"600" },
-  icon:{
-    color: "white",
-    fontSize:16
-  }
+  image:{
+    height:32,
+    width:32
+    },
+  text: { color: "black",fontFamily:"Monserrata", fontSize: 16,fontWeight:"400" },
 });

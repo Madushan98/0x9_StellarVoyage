@@ -21,7 +21,7 @@ const MyButtonMeta: ComponentMeta<typeof BookingDetailCard> = {
 
 export default MyButtonMeta;
 
-type MyButtonStory = ComponentStory<typeof BookingDetailCard>;
+type BookingDetailCardStory = ComponentStory<typeof BookingDetailCard>;
 
-export const MainBookingDetailCard: MyButtonStory = (args) => <BookingDetailCard   />;
+export const MainBookingDetailCard: BookingDetailCardStory = (args) => <BookingDetailCard   />;
 

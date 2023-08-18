@@ -2,7 +2,6 @@ import React from "react";
 import {Text, StyleSheet,Image,View } from "react-native";
 import color from "../../config/color";
 import Ionicons from "@expo/vector-icons/Ionicons"
-import { transformer } from "../../metro.config";
 
 
 export const BookingDetailCard = () => {
