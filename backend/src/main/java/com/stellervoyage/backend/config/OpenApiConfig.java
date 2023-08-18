@@ -16,7 +16,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
                         name = "Stellar Voyage"
                 ),
                 description = "OpenApi documentation for Rootcode Tech-Triathlon - Hackathon challenge ",
-                title = "OpenApi specification",
+                title = "StellarVoyage Intergalactic Space Travel Booking Application",
                 version = "1.0",
                 license = @License(
                         name = "Licence name"
