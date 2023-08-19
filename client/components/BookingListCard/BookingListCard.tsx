@@ -21,14 +21,14 @@ export const BookingListCard = ({ DepartureDate, DepartureTime, destination, fro
             >
                 <View style={styles.textContainer}>
                         <View style={{width:"60%"}}>
-                            <Text style={[styles.text,{fontSize:16,fontWeight:"600"}]}>{from}</Text>
-                            <Text style={[styles.text,{fontSize:12,fontWeight:"600"}]}>{destination}</Text>
-                            <Text style={[styles.text,{display:"flex",flexDirection:"row"},{fontSize:12,fontWeight:"600"}]}>{DepartureDate} {DepartureTime}</Text>
+                            <Text style={[styles.text,{fontSize:16,fontWeight:"800"}]}>{from}</Text>
+                            <Text style={[styles.text,{fontSize:12,fontWeight:"800"}]}>{destination}</Text>
+                            <Text style={[styles.text,{display:"flex",flexDirection:"row"},{fontSize:12,fontWeight:"800"}]}>{DepartureDate} {DepartureTime}</Text>
                         </View>
                         <View style={{width:"40%",display:"flex",justifyContent:"center",flexDirection:"row-reverse",alignItems:"flex-end"}}>
                             <View style={[styles.pricebox]}>
-                                <Text style={{fontFamily:"Mulish",fontSize:20}}>{900}$</Text>
-                                <Text style={{fontFamily:"Mulish",fontSize:12}}>For {passangerCount} passengers</Text>
+                                <Text style={{fontFamily:"Mulish",fontSize:20,fontWeight:"600"}}>{900}$</Text>
+                                <Text style={{fontFamily:"Mulish",fontSize:12,fontWeight:"600"}}>For {passangerCount} passengers</Text>
                             </View>
                         </View>
                 </View>
@@ -39,7 +39,7 @@ export const BookingListCard = ({ DepartureDate, DepartureTime, destination, fro
 
 const styles = StyleSheet.create({
     container:{
-        width: "90%",
+        width: "94%",
         height:220,
         borderRadius:16,
     },

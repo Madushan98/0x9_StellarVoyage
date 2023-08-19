@@ -31,7 +31,7 @@ const Bookings = () => {
 
   // Render individual booking items
   const renderBookingItem = ({ item }: { item: BookingInfoResponse }) => (
-    <View>
+    <View style={styles.listContainer}>
       <BookingListCard destination={item.to} from={item.from} 
       DepartureDate={item.departureDate} DepartureTime={item.departureTime} 
       price={item.totalPrice.toString()} passangerCount={item.passengers.toString()} image={image.Magf}  />
@@ -66,6 +66,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  listContainer:{
+    width:"100%",
+    display:'flex',
+    flexDirection:"column",
+    alignItems:"center"
+  }
 });
 
 export default Bookings;
