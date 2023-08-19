@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
-          java-version: '11'  # Adjust to your project's JDK version
+          java-version: '17'  # Adjust to your project's JDK version
 
       - name: Build JAR
         working-directory: backend 
