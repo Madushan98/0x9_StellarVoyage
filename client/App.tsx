@@ -26,7 +26,14 @@ function App() {
 export const Layout = () => {
   const {authState, onLogout} = useAuth();
   return (
-    <BottomBar/>
+    <NavigationContainer>
+      <Stack.Navigator>{authState?.authenticated ? (
+        <Stack.Screen name="Main" component={BottomBar} />
+      ):(
+        <Stack.Screen name="Login" component={Login} />
+      )}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
