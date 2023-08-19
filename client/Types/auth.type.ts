@@ -1,11 +1,11 @@
-export interface registerUser {
+export interface RegisterUser {
   name: string;
   email: string;
   password: string;
-  natId: string;
 };
 
-export interface loginUser {
+export interface LoginUser {
   email: string;
   password: string;
 };
+

@@ -1,5 +1,5 @@
 import React, {createContext, useState, useEffect, useContext} from 'react';
-import {registerUser, loginUser} from '../types/auth.type';
+import {RegisterUser, LoginUser} from '../types/auth.type';
 import {User} from '../types/user.type';
 import * as SecureStore from 'expo-secure-store';
 import axios from 'axios';
@@ -10,9 +10,9 @@ import SplashScreenComponent from '../screens/Splash';
 
 interface AuthContextData {
     authState?: { token: string | null; authenticated: boolean | null };
-    onRegister?: (registerUser: registerUser) => Promise<any>;
+    onRegister?: (registerUser: RegisterUser) => Promise<any>;
     onVerify?: () => Promise<any>;
-    onLogin?: (loginUser: loginUser) => Promise<any>;
+    onLogin?: (loginUser: LoginUser) => Promise<any>;
     onLogout?: () => Promise<any>;
 }
 
@@ -35,7 +35,7 @@ export const AuthProvider = ({children}: any) => {
     useEffect(() => {
         const loadToken = async () => {
             try {
-                const token = await SecureStore.getItemAsync('token');
+                const token = await SecureStore.getItemAsync('token1');
                 const userId = await SecureStore.getItemAsync('user').then((user) => {
                     return user ? JSON.parse(user).id : null;
                 });
@@ -47,7 +47,6 @@ export const AuthProvider = ({children}: any) => {
                     });
                     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
                 }
-            } catch (error) {
                 // Handle token loading error
             } finally {
                 setLoading(false); // Set loading to false when done
@@ -64,7 +63,7 @@ export const AuthProvider = ({children}: any) => {
         return <SplashScreenComponent/>;
     }
 
-    const register = async (registerUser: registerUser) => {
+    const register = async (registerUser: RegisterUser) => {
         try {
             const result = await api.post('/auth/register', registerUser);
 
@@ -76,7 +75,7 @@ export const AuthProvider = ({children}: any) => {
         }
     };
 
-    const login = async (loginUser: loginUser) => {
+    const login = async (loginUser: LoginUser) => {
         try {
             const result = await api.post('/auth/login', loginUser);
             setAuthState({

@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import Constants from "expo-constants";
 import { useFonts } from 'expo-font';
 import { AuthProvider, useAuth } from "./contexts/auth.context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Home from "./screens/Home";
 import Login from "./screens/Login";
 import BottomBar from "./screens/BottomBar";
+import Register from "./screens/Register";
 
 const Stack = createStackNavigator();
 
@@ -30,7 +30,7 @@ export const Layout = () => {
       <Stack.Navigator>{authState?.authenticated ? (
         <Stack.Screen name="Main" component={BottomBar} />
       ):(
-        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Login" component={Register} />
       )}
       </Stack.Navigator>
     </NavigationContainer>
