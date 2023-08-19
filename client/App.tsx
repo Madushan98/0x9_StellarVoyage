@@ -27,15 +27,6 @@ export const Layout = () => {
   const {authState, onLogout} = useAuth();
   return (
     <BottomBar/>
-  //  <NavigationContainer>
-  //   <Stack.Navigator>
-  //     {authState?.authenticated ? (
-  //     <Stack.Screen 
-  //       name="Home" 
-  //       component={Home} />): (
-  //     <Stack.Screen name="Login" component={Login} />)}
-  //   </Stack.Navigator>  
-  //  </NavigationContainer>
   );
 }
 
