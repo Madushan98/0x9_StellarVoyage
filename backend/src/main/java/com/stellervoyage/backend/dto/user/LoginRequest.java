@@ -1,4 +1,4 @@
-package com.stellervoyage.backend.dto;
+package com.stellervoyage.backend.dto.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

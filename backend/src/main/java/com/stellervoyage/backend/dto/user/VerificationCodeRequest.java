@@ -1,4 +1,4 @@
-package com.stellervoyage.backend.dto;
+package com.stellervoyage.backend.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDetailsResponse {
-
-    private String name;
-    private String email;
-    private String natId;
+public class VerificationCodeRequest {
+    private String userEmail;
 }
