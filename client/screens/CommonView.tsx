@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Image, KeyboardAvoidingView} from "react-native";
+import {StyleSheet, Text, View, Image, KeyboardAvoidingView, Platform} from "react-native";
 import image from "../config/image";
 import themecolor from "../config/themecolor";
 
@@ -7,9 +7,10 @@ function CommonView(props:any) {
 
     return (
         <KeyboardAvoidingView
-            style={styles.container}
-            behavior="height"
-            keyboardVerticalOffset={-150} // You can adjust this value if needed
+            style={{flex:1}}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            keyboardVerticalOffset={0}
+            // You can adjust this value if needed
         >
             <View style={styles.container}>
                 <View style={styles.topContainer} />
