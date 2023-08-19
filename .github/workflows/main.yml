@@ -22,6 +22,7 @@ jobs:
           java-version: '11'  # Adjust to your project's JDK version
 
       - name: Build JAR
+        working-directory: backend 
         run: mvn clean package -DskipTests=true
         
       - name: Build and tag Docker image
