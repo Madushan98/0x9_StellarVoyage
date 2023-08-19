@@ -15,20 +15,21 @@ export const ImageButton = ({ onPress, text, icon }: ImageButtonModel) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 42,
+    paddingHorizontal: "20%",
     width:"90%",
     paddingVertical: 8,
     backgroundColor: color.paperWhite,
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
     borderRadius:12,
-    height:42,
+    height:56,
     display:"flex",
-    flexDirection:"row"
+    flexDirection:"row",
   },
   image:{
     height:32,
-    width:32
+    width:32,
+    marginRight:12
     },
   text: { color: "black",fontFamily:"Monserrata", fontSize: 16,fontWeight:"400" },
 });

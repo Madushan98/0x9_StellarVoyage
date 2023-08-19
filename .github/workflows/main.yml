@@ -12,14 +12,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Set environment variables
+        run: |
+          echo "DBUSERNAME=${{ secrets.DBUSERNAME }}" >> $GITHUB_ENV
+          echo "DBPASSWORD=${{ secrets.DBPASSWORD }}" >> $GITHUB_ENV
+          echo "SMTPUSERNAME=${{ secrets.SMTPUSERNAME }}" >> $GITHUB_ENV
+          echo "SMTPPASSWORD=${{ secrets.SMTPPASSWORD }}" >> $GITHUB_ENV
+          
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '17'  # Adjust this as needed
+          distribution: 'adopt'
+          java-version: '17'  # Adjust to your project's JDK version
 
+      - name: Build JAR
+        working-directory: backend 
+        run: mvn clean package -DskipTests=true
+        
       - name: Build and tag Docker image
         working-directory: backend  # Navigate to the 'backend' subfolder
         run: |
@@ -31,6 +44,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERUSERNAME }}
           password: ${{ secrets.DOCKERPASSWORD }}
+
 
       - name: Push Docker image
         run: docker push madman98/0x9stellervoyage:latest
@@ -46,3 +60,4 @@ jobs:
             docker rm backend-api || true
             docker pull madman98/0x9stellervoyage:latest
             docker run -e DBUSERNAME=${{secrets.DBUSERNAME}} -e DBPASSWORD=${{secrets.DBPASSWORD}} -e SMTPUSERNAME=${{secrets.SMTPUSERNAME}} -e SMTPPASSWORD=${{secrets.SMTPPASSWORD}} -d -p 8080:8080 --name backend-api madman98/0x9stellervoyage:latest
+

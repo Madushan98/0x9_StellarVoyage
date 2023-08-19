@@ -1,5 +1,6 @@
 package com.stellervoyage.backend.dto.flight;
 
+import com.stellervoyage.backend.model.FlightMode;
 import com.stellervoyage.backend.model.TravelMode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,6 +22,7 @@ public class FlightResponse {
     private LocalDate arrivalDate;
     private LocalDate returnDate;
     private TravelMode travelMode;
+    private FlightMode flightMode;
     private double price;
     private int totalSeats;
     private int availableSeats;

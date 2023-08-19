@@ -38,10 +38,11 @@ public class AuthService {
     Random random = new Random();
     /**
      * This method registers users in the system
+     *
      * @param request : RegistrationRequest
      * @return LoginResponse
      */
-    public LoginResponse register(RegistrationRequest request) {
+    public RegistrationResponse register(RegistrationRequest request) {
 
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new UserAlreadyExistsException("User with email - %s already exists".formatted(request.getEmail()));
@@ -58,18 +59,10 @@ public class AuthService {
                 .build();
         var registeredUser = userRepository.save(user);
 
-        // without email verification
-        return mapUserToLoginResponse(registeredUser);
-
-        /**
-         * Uncomment this code to add email verification service
-         *
-         * sendVerificationEmail(registeredUser);
-         *         return RegistrationResponse.builder()
-         *                 .message("Verification Email is Sent to Your Email")
-         *                 .build();
-         */
-
+        sendVerificationEmail(registeredUser);
+        return RegistrationResponse.builder()
+               .message("Verification Email is Sent to Your Email")
+                .build();
     }
 
     /**
@@ -114,14 +107,21 @@ public class AuthService {
         String senderName = "0x9";
         String subject = "Please verify your registration";
         String content = "Dear [[name]],<br>"
-                + "Here is your verification code [[code]]:<br>"
-                + "Thank you,<br>"
-                + "Your company name.";
+                + "<br><br>"
+                + "We hope this email finds you well and excited about embarking on your StellarVoyage journey!"
+                + "To ensure the security of your account and provide you with a seamless experience,<br>"
+                + "Here is your verification code <b>[[code]]</b>:<br>"
+                + "<br>"
+                + "Thank you for choosing StellarVoyage. We're thrilled to have you on board!<br>"
+                + "<br><br>"
+                + "Safe travels and best regards,<br>"
+                + "The StellarVoyage Team";
 
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
         content = content.replace("[[name]]", user.getName());
         content = content.replace("[[code]]", user.getVerificationCode());
+
         try {
             helper.setFrom(fromAddress, senderName);
             helper.setTo(toAddress);
@@ -134,24 +134,36 @@ public class AuthService {
     }
 
     /**
-     * verify the code for user verification
+     * Verifies the user's email using the provided verification code.
      * @param request
      * @return
      */
-    public LoginResponse verifyEmail(VerificationRequest request) {
+    public LoginResponse verifyEmail(VerifyUserRequest request) {
         User user = userRepository.findByEmail(request.getUserEmail()).orElseThrow(() -> new UsernameNotFoundException(
                 "Incorrect Email or User with E-mail - %s does not exist".formatted(request.getUserEmail())));
-            if(user.getVerificationCode().equals(request.getVerificationCode())){
+
+            // Compare the provided verification code with the stored code or the default code (for testing)
+            if(user.getVerificationCode().equals(request.getVerificationCode())
+                    || request.getVerificationCode().equals("123456")){
                 user.setVerificationCode(null);
                 user.setEnabled(true);
                 userRepository.save(user);
                 return mapUserToLoginResponse(user);
             }else{
+                // Incorrect verification code
                 throw new BadCredentialsException("Incorrect verification code");
             }
     }
 
-
+    public RegistrationResponse getVerificationCode(VerificationCodeRequest request){
+        var user = userRepository.findByEmail(request.getUserEmail())
+                .orElseThrow(() -> new UsernameNotFoundException(
+                        "Incorrect Email or User with E-mail - %s does not exist".formatted(request.getUserEmail())));
+        sendVerificationEmail(user);
+        return RegistrationResponse.builder()
+                .message("Verification Email is Sent to Your Email")
+                .build();
+    }
 
     public LoginResponse mapUserToLoginResponse(User user){
         var jwtToken = jwtService.generateToken(user);

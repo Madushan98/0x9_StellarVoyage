@@ -1,54 +1,71 @@
 import React, {createContext, useState, useEffect, useContext} from 'react';
-import { registerUser,loginUser } from '../types/auth.type';
-import { User } from '../types/user.type';
+import {RegisterUser, LoginUser} from '../types/auth.type';
+import {User} from '../types/user.type';
 import * as SecureStore from 'expo-secure-store';
 import axios from 'axios';
-import { api } from '../api/api';
+import {api} from '../api/api';
+import * as SplashScreen from 'expo-splash-screen';
+import SplashScreenComponent from '../screens/Splash';
 
 
 interface AuthContextData {
-  authState?: { token: string | null; authenticated: boolean | null};
-  onRegister?: (registerUser: registerUser) => Promise<any>;
-  onVerify?: () => Promise<any>;
-  onLogin?: (loginUser: loginUser) => Promise<any>;
-  onLogout?: () => Promise<any>;
+    authState?: { token: string | null; authenticated: boolean | null };
+    onRegister?: (registerUser: RegisterUser) => Promise<any>;
+    onVerify?: () => Promise<any>;
+    onLogin?: (loginUser: LoginUser) => Promise<any>;
+    onLogout?: () => Promise<any>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const useAuth = () => useContext(AuthContext);
 
-export const AuthProvider = ({children}:any) => {
-   const [authState, setAuthState] = useState<{ 
-    token: string | null;
-    userId: string | null; 
-    authenticated: boolean | null}>({
-    token: null,
-    userId: null,
-    authenticated: null,
+export const AuthProvider = ({children}: any) => {
+    const [loading, setLoading] = useState(true);
+    const [authState, setAuthState] = useState<{
+        token: string | null;
+        userId: string | null;
+        authenticated: boolean | null
+    }>({
+        token: null,
+        userId: null,
+        authenticated: null,
     });
 
     useEffect(() => {
-      const loadToken = async () => {
-        const token = await SecureStore.getItemAsync('token');
-        const userId = await SecureStore.getItemAsync('user').then((user) => {
-          return user ? JSON.parse(user).id : null;
-        });
-        if (token) {
-          setAuthState({
-            token,
-            userId: userId,
-            authenticated: true,
-          });
-          api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        } 
-      };
-      loadToken();
+        const loadToken = async () => {
+            try {
+                const token = await SecureStore.getItemAsync('token1');
+                const userId = await SecureStore.getItemAsync('user').then((user) => {
+                    return user ? JSON.parse(user).id : null;
+                });
+                if (token) {
+                    setAuthState({
+                        token,
+                        userId: userId,
+                        authenticated: true,
+                    });
+                    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                }
+                // Handle token loading error
+            } finally {
+                setLoading(false); // Set loading to false when done
+                SplashScreen.hideAsync(); // Hide the splash screen
+            }
+
+        };
+        loadToken();
     }, []);
 
-    const register = async (registerUser: registerUser) => {
+    if (loading) {
+        // Show splash screen while loading
+        SplashScreen.preventAutoHideAsync(); // Prevent auto-hiding the splash screen
+        return <SplashScreenComponent/>;
+    }
+
+    const register = async (registerUser: RegisterUser) => {
         try {
-            const result =  await api.post('/register', registerUser);
+            const result = await api.post('/auth/register', registerUser);
 
             await SecureStore.setItemAsync('user', JSON.stringify(result.data));
             return result;
@@ -58,11 +75,11 @@ export const AuthProvider = ({children}:any) => {
         }
     };
 
-    const login = async (loginUser: loginUser) => {
+    const login = async (loginUser: LoginUser) => {
         try {
-            const result =  await axios.post('https://dummyjson.com/auth/login', loginUser);
+            const result = await api.post('/auth/login', loginUser);
             setAuthState({
-                token: result.data.token,
+                token: result.data.access_token,
                 userId: result.data.id,
                 authenticated: true,
             });
@@ -79,12 +96,12 @@ export const AuthProvider = ({children}:any) => {
     const logout = async () => {
         await SecureStore.deleteItemAsync('token');
         axios.defaults.headers.common['Authorization'] = '';
-      
+
         setAuthState({
-                  token: null,
-                  userId: null,
-                  authenticated: false,
-              });
+            token: null,
+            userId: null,
+            authenticated: false,
+        });
     };
 
     const value = {
@@ -94,11 +111,10 @@ export const AuthProvider = ({children}:any) => {
         authState,
     };
 
-  return (
-    <AuthContext.Provider
-      value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+    return (
+        <AuthContext.Provider
+            value={value}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
-

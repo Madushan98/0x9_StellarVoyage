@@ -2,10 +2,21 @@ server:
   port: 8080
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/stellervoyage
-    username: root
-    password: password
+    url: jdbc:postgresql://keen-owlet-ksh.gcp-asia-south1.cockroachlabs.cloud:26257/stellar_voyage
+    username: ${DBUSERNAME}
+    password: ${DBPASSWORD}
     driver-class-name: org.postgresql.Driver
+  mail:
+    host: smtp-relay.brevo.com
+    port: 587
+    username: ${SMTPUSERNAME}
+    password: ${SMTPPASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
 
   jpa:
     hibernate:
@@ -16,6 +27,15 @@ spring:
         format_sql: true
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    locations: classpath:db/migrations
+    baseline-on-migrate: true
+    schemas: public
+    url: jdbc:postgresql://keen-owlet-ksh.gcp-asia-south1.cockroachlabs.cloud:26257/stellar_voyage
+    user: ${DBUSERNAME}
+    password: ${DBPASSWORD}
+    enabled: false
 
 application:
   security:
