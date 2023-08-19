@@ -4,7 +4,7 @@ import CommonView from "./screens/CommonView";
 import { useFonts } from 'expo-font';
 import { AuthProvider, useAuth } from "./contexts/auth.context";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { TransitionPresets, createStackNavigator } from "@react-navigation/stack";
 import Login from "./screens/Login";
 import BottomBar from "./screens/BottomBar";
 import { useCallback, useState } from "react";
@@ -43,12 +43,22 @@ export const Layout = () => {
   const { authState, onLogout } = useAuth();
   return (
     <NavigationContainer>
-      <Stack.Navigator>{authState?.authenticated ? (
-        <Stack.Screen name="Main" options={{ headerShown: false }} component={BottomBar} />
+      <Stack.Navigator
+       screenOptions={{
+        headerShown: false,
+        cardStyle: { backgroundColor: 'white' },
+        ...TransitionPresets.SlideFromRightIOS, // Apply fade transition
+          transitionSpec: {
+          open: { animation: 'timing', config: { duration: 400 } }, // Increase the duration as needed
+          close: { animation: 'timing', config: { duration: 400 } }, // Increase the duration as needed
+        },
+      }}
+      >{authState?.authenticated ? (
+        <Stack.Screen name="Main" component={BottomBar} />
       ) : (
-        <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
+        <Stack.Screen name="Login" component={Login} />
       )}
-        <Stack.Screen name="Register" options={{ headerShown: false }} component={Register} />
+        <Stack.Screen name="Register" component={Register} />
       </Stack.Navigator>
     </NavigationContainer>
   );
