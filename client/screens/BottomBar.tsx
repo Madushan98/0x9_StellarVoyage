@@ -58,7 +58,6 @@ const TabButton = (props:any) => {
 
 export default function BottomBar() {
   return (
-    <NavigationContainer>
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
@@ -80,7 +79,6 @@ export default function BottomBar() {
         )
       })}
     </Tab.Navigator>
-    </NavigationContainer>
   )
 }
 
