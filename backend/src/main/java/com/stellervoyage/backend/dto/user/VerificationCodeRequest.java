@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class VerificationRequest {
-    private String verificationCode;
+public class VerificationCodeRequest {
     private String userEmail;
 }
-
