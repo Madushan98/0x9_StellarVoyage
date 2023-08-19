@@ -5,6 +5,7 @@ export interface UserInputModel{
 
 export interface UserInputLableModel extends UserInputModel{
     lable:string,
+    onPress:()=>void
 }
 
 export interface SwitchModel{

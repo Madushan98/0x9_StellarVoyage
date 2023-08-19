@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, TextInput } from "react-native";
-import color from "../../config/color";
 import { UserInputLableModel } from "../../Models/Input";
+import Ionicons from "@expo/vector-icons/Ionicons"
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 
 
@@ -8,10 +9,16 @@ export const SearchTextInput= ({onChange,lable}:UserInputLableModel) => {
     return (
         <View style={[styles.container]}>
             <Text style={[styles.text]}>{lable}</Text>
-            <TextInput onChangeText={text=>onChange(text)} style={styles.input}/>
+            <View style={{display:"flex",width:"100%",paddingHorizontal:12,borderRadius:32,backgroundColor:"white",flexDirection:"row",height:"100%",alignItems:"center"}}>
+              <TextInput onChangeText={text=>onChange(text)} style={styles.input}/>
+              <TouchableOpacity>
+               <Ionicons style={styles.icon} name="search-sharp"></Ionicons>
+              </TouchableOpacity>
+            </View>
         </View>
       );
   };
+
 
 const styles = StyleSheet.create({
     container: {
@@ -30,11 +37,12 @@ const styles = StyleSheet.create({
         fontWeight:"800",
         paddingTop:2,
         height:"100%",
-        width:"100%",
-        backgroundColor:"white",
-        borderRadius:32,
-        paddingHorizontal:24
+        width:"90%",
+        paddingHorizontal:12,
+        display:'flex',
+        flexDirection:"row-reverse",
       },
+      icon:{fontSize:32},
       text: { fontFamily:"Monserrata", marginBottom:12, color:"white", fontSize: 16,fontWeight:"800" },
   });
 

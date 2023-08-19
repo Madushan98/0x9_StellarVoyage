@@ -11,6 +11,8 @@ import { useCallback, useState } from "react";
 import * as SplashScreen from 'expo-splash-screen';
 import Register from "./screens/Register";
 import Home from "./screens/Home";
+import SearchPage from "./screens/Search";
+import SearchScreen from "./screens/Search";
 
 const Stack = createStackNavigator();
 
@@ -47,7 +49,7 @@ export const Layout = () => {
       <Stack.Navigator>{authState?.authenticated ? (
         <Stack.Screen name="Main" options={{ headerShown: false }} component={BottomBar} />
       ) : (
-        <Stack.Screen name="Login" options={{ headerShown: false }} component={Home} />
+        <Stack.Screen name="Login" options={{ headerShown: false }} component={SearchScreen} />
       )}
         <Stack.Screen name="Register"  options={{ headerShown: false }} component={Register} />
       </Stack.Navigator>

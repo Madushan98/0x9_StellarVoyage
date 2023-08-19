@@ -9,8 +9,8 @@ export const PlanetCard = ({onPress}:ButtonModel) => {
     const planetKeysArray:string[] = Object.keys(planets);
   return (
     <View style={styles.container}>
-        {planetKeysArray.map((planet)=>(
-            <TouchableOpacity style={{width:"25%",height:42}} onPress={onPress}>
+        {planetKeysArray.map((planet,index)=>(
+            <TouchableOpacity key={index} style={{width:"25%",height:42}} onPress={onPress}>
                  <Image style={{flex:1,width:52,height:52,alignSelf:"center"}} source={planets[planet]}/>
             </TouchableOpacity>
         ))}
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     flexDirection:"row",
     flexWrap:"wrap",
     justifyContent:"space-around",
-    height:190,
+    height:140,
     rowGap:24,
     
   },

@@ -45,7 +45,7 @@ export const DestinationCard = ({climate,culture,name,planet,touristAttractions}
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 12,
-    width:"40%",
+    width:"90%",
     paddingVertical: 12,
     backgroundColor: color.destinationCardbg,
     alignItems: "center",
@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
     display:"flex",
     flexDirection:"column",
     justifyContent:"flex-start",
-    alignContent:"flex-start"
+    alignContent:"flex-start",
+    height:240
   },
   titleContainer:{
     display:"flex",
@@ -61,9 +62,11 @@ const styles = StyleSheet.create({
     justifyContent:"flex-start",
     width:"100%",
     alignItems:"center",
-    marginBottom:4
+    marginBottom:4,
+    height:"18%"
   },
   detailContainer:{
+    height:"80%",
     display:"flex",
     flexDirection:"row",
     width:"100%",
@@ -82,14 +85,16 @@ const styles = StyleSheet.create({
     display:"flex",
     flexDirection:"column",
     width:"50%",
+    height:"100%",
     alignItems:"flex-start",
-    justifyContent:"space-between"
+    justifyContent:"flex-start",
   },
   detailBox:{
     display:"flex",
     flexDirection:"column",
-    justifyContent:"space-between",
-    alignItems:"flex-start"
+    justifyContent:"flex-start",
+    alignItems:"flex-start",
+    height:"32%"
   },
   icon:{
     fontSize:32,

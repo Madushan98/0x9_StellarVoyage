@@ -9,29 +9,11 @@ import { PlanetCard } from '../components/PlanetCard/PlanetCard';
 
 const Home = () => {
 
-  const [showComponentA, setShowComponentA] = useState(true);
-  const opacity = new Animated.Value(1);
-
-  const toggleComponents = () => {
-    Animated.timing(opacity, {
-      toValue: 0,
-      duration: 300, // Duration of fade out animation in milliseconds
-      useNativeDriver: true,
-    }).start(() => {
-      setShowComponentA(!showComponentA);
-      Animated.timing(opacity, {
-        toValue: 1,
-        duration: 300, // Duration of fade in animation in milliseconds
-        useNativeDriver: true,
-      }).start();
-    });
-  };
-
   function onChange(text: string) { }
 
   return (
     <CommonView>
-      <View style={[styles.profileContainer, common.centeEndrHorizontal]}>
+      <View style={[styles.profileContainer, common.centerEndHorizontal]}>
         <Text style={[commonFonts.profile, commonColor.white]} >Hi Name !</Text>
         <ImageBackground
           source={image.Titan} // Replace with your image path
@@ -51,10 +33,9 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   profileContainer: {
-    height: "15%",
+    height: "18%",
     width: "100%",
     justifyContent: "space-between",
-    alignContent: "flex-end",
     marginBottom: 12
   },
   image: {
@@ -68,11 +49,11 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   searchContainer: {
-    height: "12%",
+    height: "10%",
     justifyContent: "flex-end",
   },
   planetContainer:{
-    height:"22%",
+    height:200,
     display:"flex",
     flexDirection:"column",
     justifyContent:"flex-end"
