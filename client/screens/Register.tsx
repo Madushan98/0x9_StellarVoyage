@@ -6,9 +6,11 @@ import { MainButton } from '../components/MainButton/MainButton';
 import { UserInput } from '../components/UserInputCard/UserInput';
 import { View, Text, TextInput, Button } from 'react-native';
 import CommonView from './CommonView';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { DontHaveAccountScreenProps } from '../Models/Navigation';
 
 
-const Register = ({navigation}) => {
+const Register = ({ navigation }:DontHaveAccountScreenProps) => {
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -51,7 +53,7 @@ const Register = ({navigation}) => {
                 </View>
                 <View style={[common.centerVertical, { height: "30%", justifyContent: "space-around" }]}>
                     <MainButton text='SIGN UP' onPress={handleRegister} />
-                    <Text onPress={()=>navigation.navigate('Login')} style={[commonColor.white, commonFonts.mulish]}>Already have an account?</Text>
+                    <Text onPress={() => navigation.navigate('Login')} style={[commonColor.white, commonFonts.mulish]}>Already have an account?</Text>
                 </View>
             </CommonView>
         </>
