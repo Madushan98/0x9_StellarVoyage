@@ -7,6 +7,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "./screens/Login";
 import BottomBar from "./screens/BottomBar";
+import Register from "./screens/Register";
 
 const Stack = createStackNavigator();
 
@@ -28,7 +29,7 @@ export const Layout = () => {
       <Stack.Navigator>{authState?.authenticated ? (
         <Stack.Screen name="Main" component={BottomBar} />
       ):(
-        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Login" component={Register} />
       )}
       </Stack.Navigator>
     </NavigationContainer>
