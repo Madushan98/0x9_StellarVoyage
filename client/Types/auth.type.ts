@@ -9,3 +9,7 @@ export interface LoginUser {
   password: string;
 };
 
+export interface EmailVerification {
+  verificationCode: string;
+  userEmail: string ;
+};

@@ -2,13 +2,13 @@ import React from "react";
 import { Text, StyleSheet, Image, View, ImageBackground } from "react-native";
 import color from "../../config/color";
 import planetImg from '../../config/image'
-import { Destination } from "../../types/Destination.types";
+import { Destination } from "../../types/destination.types";
 import planets from "../../config/planetIcon"
 import { IconButton } from "../IconButton/IconButton";
 import { BookingListCardModel } from "../../Models/Card";
 
 
-export const BookingListCard = ({ DepartureDate, DepartureTime, destination, form, image, passangerCount, price }: BookingListCardModel) => {
+export const BookingListCard = ({ DepartureDate, DepartureTime, destination, from, image, passangerCount, price }: BookingListCardModel) => {
 
 
 
@@ -21,7 +21,7 @@ export const BookingListCard = ({ DepartureDate, DepartureTime, destination, for
             >
                 <View style={styles.textContainer}>
                         <View style={{width:"60%"}}>
-                            <Text style={[styles.text,{fontSize:16,fontWeight:"600"}]}>{form}</Text>
+                            <Text style={[styles.text,{fontSize:16,fontWeight:"600"}]}>{from}</Text>
                             <Text style={[styles.text,{fontSize:12,fontWeight:"600"}]}>{destination}</Text>
                             <Text style={[styles.text,{display:"flex",flexDirection:"row"},{fontSize:12,fontWeight:"600"}]}>{DepartureDate} {DepartureTime}</Text>
                         </View>
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "flex-end",
     },
-    text:{fontFamily:"Montserrat",color:"white"},
+    text:{fontFamily:"Monserrata",color:"white"},
     textContainer:{
         width:"100%",
         height:"30%",

@@ -5,7 +5,7 @@ export interface CardModel{
 
 
 export interface BookingListCardModel{
-    form:string,
+    from:string,
     DepartureDate:string,
     price:string,
     image:any,
