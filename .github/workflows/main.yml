@@ -12,9 +12,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Set environment variables
+        run: |
+          echo "DBUSERNAME=${{ secrets.DBUSERNAME }}" >> $GITHUB_ENV
+          echo "DBPASSWORD=${{ secrets.DBPASSWORD }}" >> $GITHUB_ENV
+          echo "SMTPUSERNAME=${{ secrets.SMTPUSERNAME }}" >> $GITHUB_ENV
+          echo "SMTPPASSWORD=${{ secrets.SMTPPASSWORD }}" >> $GITHUB_ENV
+          
       - name: Checkout code
         uses: actions/checkout@v2
-        
+
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
