@@ -27,7 +27,7 @@ const Login = () => {
         <>
               <CommonView>
             <View style={[common.middleArea, common.topArea]}>
-                <Text style={[common.mainTitle, { color: "white" }]}>Login</Text>
+                <Text style={[common.mainTitle, { color: "white",marginBottom:12 }]}>Login</Text>
                 <Text style={[{ color: "white" }]}>Hi Welcome Back</Text>
             </View>
             <View style={[common.centerVertical, { height: "20%", justifyContent: "space-around" }]}>

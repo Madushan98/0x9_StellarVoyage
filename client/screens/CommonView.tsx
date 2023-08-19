@@ -9,7 +9,7 @@ function CommonView(props:any) {
         <KeyboardAvoidingView
             style={styles.container}
             behavior="height"
-            keyboardVerticalOffset={-290} // You can adjust this value if needed
+            keyboardVerticalOffset={-200} // You can adjust this value if needed
         >
             <View style={styles.container}>
                 <View style={styles.topContainer} />
@@ -44,12 +44,12 @@ function CommonView(props:any) {
       top: 0,
       left: 0,
       width: '100%',
-      height: "70%"
+      height: "75%"
   
     },
     topContainer: {
       flex: 1,
-      height: "30%",
+      height: "25%",
       backgroundColor: themecolor.topContainer,
       borderBottomLeftRadius: 42,
       borderBottomRightRadius: 42,
