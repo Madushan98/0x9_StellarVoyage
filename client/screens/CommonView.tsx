@@ -9,7 +9,7 @@ function CommonView(props:any) {
         <KeyboardAvoidingView
             style={styles.container}
             behavior="height"
-            keyboardVerticalOffset={-200} // You can adjust this value if needed
+            keyboardVerticalOffset={-150} // You can adjust this value if needed
         >
             <View style={styles.container}>
                 <View style={styles.topContainer} />
