@@ -72,6 +72,7 @@ public class FlightService {
                 .returnDate(flight.getReturnDate())
                 .totalSeats(flight.getTotalSeats())
                 .travelMode(flight.getTravelMode())
+                .flightMode(flight.getFlightMode())
                 .price(flight.getPrice())
                 .availableSeats(flight.getAvailableSeats())
                 .build();
@@ -82,6 +83,7 @@ public class FlightService {
                 .from(from)
                 .to(to)
                 .travelMode(request.getTravelMode())
+                .flightMode(request.getFlightMode())
                 .flightId(UUID.randomUUID())
                 .availableSeats(40)
                 .totalSeats(40)

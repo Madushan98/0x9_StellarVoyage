@@ -1,5 +1,6 @@
 package com.stellervoyage.backend.dto.flight;
 
+import com.stellervoyage.backend.model.FlightMode;
 import com.stellervoyage.backend.model.TravelMode;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -29,6 +30,8 @@ public class FlightRequest {
     private LocalTime departureTime;
     @Enumerated(EnumType.STRING)
     private TravelMode travelMode;
+    @Enumerated(EnumType.STRING)
+    private FlightMode flightMode;
     private double price;
     private int totalSeats;
     private String from;
