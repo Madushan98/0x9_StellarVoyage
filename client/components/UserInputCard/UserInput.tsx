@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
-import { RoundButtonModel } from "../../Models/Button";
 import color from "../../config/color";
 import { UserInputModel } from "../../Models/Input";
 
@@ -25,16 +24,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     borderRadius:8,
-    backgroundColor:color.paperWhite
+    backgroundColor:color.paperWhite,
+    height:56
   },
   input:{
-    flex: 1,
     color: "#474a56",
     fontFamily: "Mazzard",
-    fontSize: 14,
+    fontSize: 16,
     fontWeight:"500",
-    outlineWidth: 0,
-    paddingTop:2
+    outlineWidth: 1,
+    paddingTop:2,
   },
   userInputArea:{width:"100%"},
   text: { fontFamily:"Mulish", fontSize: 12,fontWeight:"700" },
