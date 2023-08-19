@@ -31,7 +31,7 @@ const Login = ({navigation}:NavigationProps) => {
                     <Text style={[common.mainTitle, { color: "white", marginBottom: 12 }]}>Login</Text>
                     <Text style={[{ color: "white" }]}>Hi Welcome Back</Text>
                 </View>
-                <View style={[common.centerVertical, { height: "20%", justifyContent: "space-around" }]}>
+                <View style={[common.centerVertical, { height: 150, justifyContent: "space-around" }]}>
                     <UserInput onPress={()=>oncange()} lable='Email' onChange={(value) => setEmail(value)} />
                     <UserInput  onPress={()=>oncange()} lable='password' onChange={(value) => setPassword(value)} />
                 </View>
@@ -39,7 +39,7 @@ const Login = ({navigation}:NavigationProps) => {
                     <ToggleSwitch lable='Remember Me' />
                     <Text style={[commonColor.white, commonFonts.mulish]}>Forgate Password?</Text>
                 </View>
-                <View style={[common.centerVertical, { height: "40%", justifyContent: "space-around" }]}>
+                <View style={[common.centerVertical, { height: 300, justifyContent: "space-around" }]}>
                     <MainButton text='SIGN IN' onPress={handleLogin} />
                     <Text style={[commonFonts.mulish, commonColor.white, { fontSize: 16, fontWeight: "500" }]}>OR</Text>
                     <ImageButton text='Login with Goole' icon={icon.GoogleIcon}></ImageButton>

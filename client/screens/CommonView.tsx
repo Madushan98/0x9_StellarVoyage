@@ -9,6 +9,7 @@ function CommonView(props:any) {
         <KeyboardAvoidingView
             style={{flex:1}}
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            keyboardVerticalOffset={0}
             // You can adjust this value if needed
         >
             <View style={styles.container}>

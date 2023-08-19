@@ -19,7 +19,7 @@ export const UserInput= ({lable,onChange}:UserInputLableModel) => {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
-    width:"100%",
+    width:"90%",
     paddingVertical: 8,
     alignItems: "center",
     justifyContent: "flex-start",
