@@ -15,6 +15,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11  # Adjust to your project's JDK version
+
+      - name: Build JAR
+        run: mvn clean package -DskipTests=true
+        
       - name: Build and tag Docker image
         working-directory: backend  # Navigate to the 'backend' subfolder
         run: |
