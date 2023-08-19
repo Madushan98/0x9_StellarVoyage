@@ -15,11 +15,11 @@ const Stack = createStackNavigator();
 
 function App() {
 
-  const [fontLoaded,fontError] = useFonts({
+  const [fontLoaded, fontError] = useFonts({
     'Monserrata': require('./assets/fonts/Mon.ttf'),
     'Mulish': require('./assets/fonts/Mulish.ttf'),
-    'MazzardH':require('./assets/fonts/Mazzard.ttf'),
-    'Mazzard':require('./assets/fonts/MazzardH.ttf')
+    'MazzardH': require('./assets/fonts/Mazzard.ttf'),
+    'Mazzard': require('./assets/fonts/MazzardH.ttf')
   });
 
   const onLayoutRootView = useCallback(async () => {
@@ -31,23 +31,24 @@ function App() {
   if (!fontLoaded && !fontError) {
     return null;
   }
-   
+
   return (
-   <AuthProvider>
-      <Layout/>
-   </AuthProvider>
+    <AuthProvider>
+      <Layout />
+    </AuthProvider>
   );
 }
 
 export const Layout = () => {
-  const {authState, onLogout} = useAuth();
+  const { authState, onLogout } = useAuth();
   return (
     <NavigationContainer>
       <Stack.Navigator>{authState?.authenticated ? (
         <Stack.Screen name="Main" options={{ headerShown: false }} component={BottomBar} />
-      ):(
+      ) : (
         <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
       )}
+        <Stack.Screen name="Register" options={{ headerShown: false }} component={Register} />
       </Stack.Navigator>
     </NavigationContainer>
   );

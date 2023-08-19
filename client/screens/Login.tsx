@@ -9,13 +9,13 @@ import { MainButton } from '../components/MainButton/MainButton';
 import icon from '../config/icon';
 import CommonView from './CommonView';
 
-const Login = () => {
+const Login = ({navigation}) => {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
-    const {onLogin} = useAuth();
+    const { onLogin } = useAuth();
 
     const handleLogin = async () => {
-        const result = await onLogin!({email,password});
+        const result = await onLogin!({ email, password });
         if (result?.error) {
             alert(result.message)
         }
@@ -25,26 +25,26 @@ const Login = () => {
 
     return (
         <>
-              <CommonView>
-            <View style={[common.middleArea, common.topArea]}>
-                <Text style={[common.mainTitle, { color: "white",marginBottom:12 }]}>Login</Text>
-                <Text style={[{ color: "white" }]}>Hi Welcome Back</Text>
-            </View>
-            <View style={[common.centerVertical, { height: "20%", justifyContent: "space-around" }]}>
-                <UserInput lable='Email' onChange={(value)=>setEmail(value)} />
-                <UserInput lable='password'  onChange={(value)=>setPassword(value)} />
-            </View>
-            <View style={[common.centerHorizontal, { justifyContent: 'space-between' }]}>
-                <ToggleSwitch lable='Remember Me' />
-                <Text style={[commonColor.white, commonFonts.mulish]}>Forgate Password?</Text>
-            </View>
-            <View style={[common.centerVertical, { height: "40%", justifyContent: "space-around" }]}>
-                <MainButton text='SIGN IN' onPress={handleLogin} />
-                <Text style={[commonFonts.mulish, commonColor.white, { fontSize: 16, fontWeight: "500" }]}>OR</Text>
-                <ImageButton text='Login with Goole' icon={icon.GoogleIcon}></ImageButton>
-                <ImageButton text='Login with Facebook' icon={icon.FaceBookIcon}></ImageButton>
-                <Text style={[commonColor.white, commonFonts.mulish]}>Don't have an Account</Text>
-            </View>
+            <CommonView>
+                <View style={[common.middleArea, common.topArea]}>
+                    <Text style={[common.mainTitle, { color: "white", marginBottom: 12 }]}>Login</Text>
+                    <Text style={[{ color: "white" }]}>Hi Welcome Back</Text>
+                </View>
+                <View style={[common.centerVertical, { height: "20%", justifyContent: "space-around" }]}>
+                    <UserInput lable='Email' onChange={(value) => setEmail(value)} />
+                    <UserInput lable='password' onChange={(value) => setPassword(value)} />
+                </View>
+                <View style={[common.centerHorizontal, { justifyContent: 'space-between' }]}>
+                    <ToggleSwitch lable='Remember Me' />
+                    <Text style={[commonColor.white, commonFonts.mulish]}>Forgate Password?</Text>
+                </View>
+                <View style={[common.centerVertical, { height: "40%", justifyContent: "space-around" }]}>
+                    <MainButton text='SIGN IN' onPress={handleLogin} />
+                    <Text style={[commonFonts.mulish, commonColor.white, { fontSize: 16, fontWeight: "500" }]}>OR</Text>
+                    <ImageButton text='Login with Goole' icon={icon.GoogleIcon}></ImageButton>
+                    <ImageButton text='Login with Facebook' icon={icon.FaceBookIcon}></ImageButton>
+                    <Text onPress={()=>navigation.navigate('Register')} style={[commonColor.white, commonFonts.mulish]}>Don't have an Account</Text>
+                </View>
             </CommonView>
         </>
     )
