@@ -3,9 +3,9 @@ name: Deploy to DigitalOcean
 on:
   push:
     branches:
-      - master
-    paths:
-      - 'backend/**'  # Only trigger on changes in the 'backend' subfolder
+      - master  # Adjust this to your default branch
+    # paths:
+    #   - 'backend/**'  # Only trigger on changes in the 'backend' subfolder
 
 jobs:
   deploy:
