@@ -3,7 +3,7 @@ name: Deploy to DigitalOcean
 on:
   push:
     branches:
-      - workflow
+      - master
     paths:
       - 'backend/**'  # Only trigger on changes in the 'backend' subfolder
 
