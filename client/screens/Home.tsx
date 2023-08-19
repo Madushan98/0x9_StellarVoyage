@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground,Animated } from 'react-native';
 import React from 'react';
 import CommonView from './CommonView';
 import { common, commonColor, commonFonts } from '../config/style';
@@ -6,7 +6,26 @@ import image from '../config/image';
 import { SearchTextInput } from '../components/SearchTextInput/SearchTextInput';
 import { PlanetCard } from '../components/PlanetCard/PlanetCard';
 
+
 const Home = () => {
+
+  const [showComponentA, setShowComponentA] = useState(true);
+  const opacity = new Animated.Value(1);
+
+  const toggleComponents = () => {
+    Animated.timing(opacity, {
+      toValue: 0,
+      duration: 300, // Duration of fade out animation in milliseconds
+      useNativeDriver: true,
+    }).start(() => {
+      setShowComponentA(!showComponentA);
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration: 300, // Duration of fade in animation in milliseconds
+        useNativeDriver: true,
+      }).start();
+    });
+  };
 
   function onChange(text: string) { }
 

@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     flexDirection:"row",
     flexWrap:"wrap",
     justifyContent:"space-around",
-    height:140,
+    height:190,
     rowGap:24,
     
   },
