@@ -4,7 +4,7 @@ import { View } from "react-native";
 import { ImageButton } from "./ImageButton";
 import icon from "../../config/icon"
 
-const MyButtonMeta: ComponentMeta<typeof ImageButton> = {
+const ImageButtonMeta: ComponentMeta<typeof ImageButton> = {
   title: "ImageButton",
   component: ImageButton,
   args: {
@@ -20,7 +20,7 @@ const MyButtonMeta: ComponentMeta<typeof ImageButton> = {
   ],
 };
 
-export default MyButtonMeta;
+export default ImageButtonMeta;
 
 type ImageButtonStory = ComponentStory<typeof ImageButton>;
 

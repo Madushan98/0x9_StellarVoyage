@@ -1,6 +1,7 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet} from "react-native";
 import Constants from "expo-constants";
-import { useFonts } from 'expo-font';
+import themecolor from "./config/themecolor";
+import CommonView from "./screens/CommonView";
 import { AuthProvider, useAuth } from "./contexts/auth.context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -12,13 +13,11 @@ const Stack = createStackNavigator();
 
 function App() {
 
-  const [fontsLoaded, fontError] = useFonts({
-    'Monserrata': require('./assets/fonts/Mon.ttf'),
-  });
-
   return (
    <AuthProvider>
-      <Layout></Layout>
+    <CommonView>
+      <Login/>
+    </CommonView>
    </AuthProvider>
   );
 }
@@ -35,7 +34,7 @@ export const Layout = () => {
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
 
 let AppEntryPoint = App;
 
@@ -43,13 +42,7 @@ if (Constants.expoConfig?.extra?.storybookEnabled === "true") {
   AppEntryPoint = require("./.ondevice").default;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+
 
 export default AppEntryPoint;
+

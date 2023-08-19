@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius:12,
-    height:42
+    height:56
   },
   text: { color: "white",fontFamily:"Monserrata", fontSize: 16,fontWeight:"400" },
 });
