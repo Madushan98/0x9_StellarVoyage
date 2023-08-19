@@ -4,3 +4,12 @@ export interface CardModel{
 }
 
 
+export interface BookingListCardModel{
+    form:string,
+    DepartureDate:string,
+    price:string,
+    image:any,
+    destination:string,
+    passangerCount:string,
+    DepartureTime:string
+}
