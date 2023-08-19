@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master  # Adjust this to your default branch
+      - workflow
     paths:
       - 'backend/**'  # Only trigger on changes in the 'backend' subfolder
 
@@ -45,4 +46,4 @@ jobs:
             docker stop backend-api || true
             docker rm backend-api || true
             docker pull madman98/0x9stellervoyage:latest
-            docker run -d -p 8080:8080 --name madman98/0x9stellervoyage:latest
+            docker run -e DBUSERNAME=${{secrets.DBUSERNAME}} -e DBPASSWORD=${{secrets.DBPASSWORD}} -e SMTPUSERNAME=${{secrets.SMTPUSERNAME}} -e SMTPPASSWORD=${{secrets.SMTPPASSWORD}} -d -p 8080:8080 --name backend-api madman98/0x9stellervoyage:latest
