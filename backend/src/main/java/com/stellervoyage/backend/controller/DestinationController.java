@@ -47,5 +47,10 @@ public class DestinationController {
     public ResponseEntity<List<DestinationResponse>> getAll() {
         return ResponseEntity.ok(service.getAllDestinations());
     }
+    @GetMapping("/allNames")
+    public ResponseEntity<List<String>> getAllNames() {
+        return ResponseEntity.ok(service.getAllDestinationNames());
+    }
+
 
 }
