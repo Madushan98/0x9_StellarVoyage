@@ -48,7 +48,7 @@ export const Layout = () => {
       <Stack.Navigator>{authState?.authenticated ? (
         <Stack.Screen name="Main" component={BottomBar} />
       ):(
-        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Login" component={Register} />
       )}
       </Stack.Navigator>
     </NavigationContainer>

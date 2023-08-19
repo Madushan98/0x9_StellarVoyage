@@ -1,7 +1,6 @@
 import { View, Text, TextInput, Button } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/auth.context';
-import { api } from '../api/api';
 import { common, commonColor, commonFonts } from '../config/style';
 import { UserInput } from '../components/UserInputCard/UserInput';
 import { ToggleSwitch } from '../components/Switch/Switch';
@@ -12,15 +11,7 @@ import icon from '../config/icon';
 const Login = () => {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
-    const {onLogin,onRegister} = useAuth();
-
-    useEffect(() => {
-        // const testCall = async () => {
-        //     const result = await api.get('/destinations/all');
-        //     console.log(result.data);
-        // }
-        // testCall();
-    }, [])
+    const {onLogin} = useAuth();
 
     const handleLogin = async () => {
         const result = await onLogin!({email,password});

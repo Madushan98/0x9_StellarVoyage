@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Text,StyleSheet } from 'react-native';
 
 const SplashScreenComponent = () => {
   return (
     <View style={styles.container}>
+      <Text>Splash Screen</Text>
     </View>
   );
 };

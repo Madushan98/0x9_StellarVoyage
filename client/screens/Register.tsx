@@ -1,9 +1,10 @@
-import { View, Text} from 'react-native';
+
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/auth.context';
 import { common, commonColor, commonFonts } from '../config/style';
 import { MainButton } from '../components/MainButton/MainButton';
 import { UserInput } from '../components/UserInputCard/UserInput';
+import {View, Text, TextInput, Button} from 'react-native';
 
 
 const Register = () => {
@@ -13,15 +14,6 @@ const Register = () => {
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const [error, setError] = useState('');
     const {onRegister} = useAuth();
-
-
-    useEffect(() => {
-        // const testCall = async () => {
-        //     const result = await api.get('/destinations/all');
-        //     console.log(result.data);
-        // }
-        // testCall();
-    }, [])
 
     const handleRegister = async () => {
         if (!name || !email || !password || !confirmPassword) {
