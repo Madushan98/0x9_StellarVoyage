@@ -74,6 +74,10 @@ public class BookingService {
                 .flightId(booking.getUser().getUserId())
                 .passengers(booking.getPassengers())
                 .totalPrice(booking.getTotalPrice())
+                .from(booking.getFlight().getFrom().getName())
+                .to(booking.getFlight().getTo().getName())
+                .departureDate(booking.getFlight().getDepartureDate())
+                .departureTime(booking.getFlight().getDepartureTime())
                 .build();
     }
 

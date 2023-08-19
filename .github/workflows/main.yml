@@ -4,22 +4,35 @@ on:
   push:
     branches:
       - master  # Adjust this to your default branch
-    paths:
-      - 'backend/**'  # Only trigger on changes in the 'backend' subfolder
+    # paths:
+    #   - 'backend/**'  # Only trigger on changes in the 'backend' subfolder
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Set environment variables
+        run: |
+          echo "DBUSERNAME=${{ secrets.DBUSERNAME }}" >> $GITHUB_ENV
+          echo "DBPASSWORD=${{ secrets.DBPASSWORD }}" >> $GITHUB_ENV
+          echo "SMTPUSERNAME=${{ secrets.SMTPUSERNAME }}" >> $GITHUB_ENV
+          echo "SMTPPASSWORD=${{ secrets.SMTPPASSWORD }}" >> $GITHUB_ENV
+          
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '17'  # Adjust this as needed
+          distribution: 'adopt'
+          java-version: '17'  # Adjust to your project's JDK version
 
+      - name: Build JAR
+        working-directory: backend 
+        run: mvn clean package -DskipTests=true
+        
       - name: Build and tag Docker image
         working-directory: backend  # Navigate to the 'backend' subfolder
         run: |
@@ -31,6 +44,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERUSERNAME }}
           password: ${{ secrets.DOCKERPASSWORD }}
+
 
       - name: Push Docker image
         run: docker push madman98/0x9stellervoyage:latest
@@ -45,4 +59,4 @@ jobs:
             docker stop backend-api || true
             docker rm backend-api || true
             docker pull madman98/0x9stellervoyage:latest
-            docker run -d -p 8080:8080 --name madman98/0x9stellervoyage:latest
+            docker run -e DBUSERNAME=${DBUSERNAME} -e DBPASSWORD=${DBPASSWORD} -e SMTPUSERNAME=${SMTPUSERNAME} -e SMTPPASSWORD=${SMTPPASSWORD} -d -p 8080:8080 --name backend-api madman98/0x9stellervoyage:latest
