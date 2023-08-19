@@ -7,6 +7,7 @@ import { ToggleSwitch } from '../components/Switch/Switch';
 import { ImageButton } from '../components/ImageButton/ImageButton';
 import { MainButton } from '../components/MainButton/MainButton';
 import icon from '../config/icon';
+import CommonView from './CommonView';
 
 const Login = () => {
     const [email, setEmail] = useState<string>("")
@@ -24,13 +25,14 @@ const Login = () => {
 
     return (
         <>
+              <CommonView>
             <View style={[common.middleArea, common.topArea]}>
                 <Text style={[common.mainTitle, { color: "white" }]}>Login</Text>
                 <Text style={[{ color: "white" }]}>Hi Welcome Back</Text>
             </View>
             <View style={[common.centerVertical, { height: "20%", justifyContent: "space-around" }]}>
                 <UserInput lable='Email' onChange={(value)=>setEmail(value)} />
-                <UserInput lable='password' onChange={(value)=>setPassword(value)} />
+                <UserInput lable='password'  onChange={(value)=>setPassword(value)} />
             </View>
             <View style={[common.centerHorizontal, { justifyContent: 'space-between' }]}>
                 <ToggleSwitch lable='Remember Me' />
@@ -43,6 +45,7 @@ const Login = () => {
                 <ImageButton text='Login with Facebook' icon={icon.FaceBookIcon}></ImageButton>
                 <Text style={[commonColor.white, commonFonts.mulish]}>Don't have an Account</Text>
             </View>
+            </CommonView>
         </>
     )
 }

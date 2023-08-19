@@ -15,9 +15,7 @@ function App() {
 
   return (
    <AuthProvider>
-    <CommonView>
-      <Login/>
-    </CommonView>
+      <Layout/>
    </AuthProvider>
   );
 }
@@ -27,9 +25,9 @@ export const Layout = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>{authState?.authenticated ? (
-        <Stack.Screen name="Main" component={BottomBar} />
+        <Stack.Screen name="Main" options={{ headerShown: false }} component={BottomBar} />
       ):(
-        <Stack.Screen name="Login" component={Register} />
+        <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
       )}
       </Stack.Navigator>
     </NavigationContainer>
