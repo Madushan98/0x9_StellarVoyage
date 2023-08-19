@@ -1,22 +1,19 @@
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text} from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/auth.context';
-import { api } from '../api/api';
 import { common, commonColor, commonFonts } from '../config/style';
-import icon from '../config/icon';
-import { ImageButton } from '../components/ImageButton/ImageButton';
 import { MainButton } from '../components/MainButton/MainButton';
 import { UserInput } from '../components/UserInputCard/UserInput';
-import { ToggleSwitch } from '../components/Switch/Switch';
 
 
 const Register = () => {
-    const [name, setName] = useState<string>("")
-    const [email, setEmail] = useState<string>("")
-    const [password, setPassword] = useState<string>("")
-    const [confiremPassword, setconfiremPassword] = useState<string>("")
+    const [name, setName] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [confirmPassword, setConfirmPassword] = useState<string>('');
+    const [error, setError] = useState('');
+    const {onRegister} = useAuth();
 
-    const {onLogin,onRegister} = useAuth();
 
     useEffect(() => {
         // const testCall = async () => {
@@ -26,14 +23,25 @@ const Register = () => {
         // testCall();
     }, [])
 
-    const handleLogin = async () => {
-        const result = await onLogin!({email,password});
-        if (result?.error) {
-            alert(result.message)
+    const handleRegister = async () => {
+        if (!name || !email || !password || !confirmPassword) {
+            setError('All fields are required');
+            return;
         }
-    }
+
+        if (password !== confirmPassword) {
+            setError('Passwords do not match');
+            return;
+        }
+
+        const result = await onRegister!({name, email, password});
+        if (result?.error) {
+            setError(result.message);
+        }
+    };
 
     const oncange = (test: string) => { }
+
 
     return (
         <>
@@ -45,13 +53,10 @@ const Register = () => {
             <UserInput lable='Email' onChange={(value)=>setName(value)} />
                 <UserInput lable='Email' onChange={(value)=>setEmail(value)} />
                 <UserInput lable='password' onChange={(value)=>setPassword(value)} />
-                <UserInput lable='Cofirem Password' onChange={(value)=>setconfiremPassword(value)} />
+                <UserInput lable='Cofirem Password' onChange={(value)=>setConfirmPassword(value)} />
             </View>
             <View style={[common.centerVertical, { height: "30%", justifyContent: "space-around" }]}>
-                <MainButton text='SIGN UP' onPress={handleLogin} />
-                {/* <Text style={[commonFonts.mulish, commonColor.white, { fontSize: 16, fontWeight: "500" }]}>OR</Text> */}
-                {/* <ImageButton text='Login with Goole' icon={icon.GoogleIcon}></ImageButton>
-                <ImageButton text='Login with Facebook' icon={icon.FaceBookIcon}></ImageButton> */}
+                <MainButton text='SIGN UP' onPress={handleRegister} />
                 <Text style={[commonColor.white, commonFonts.mulish]}>Already have an account?</Text>
             </View>
         </>
