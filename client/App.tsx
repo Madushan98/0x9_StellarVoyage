@@ -4,7 +4,7 @@ import CommonView from "./screens/CommonView";
 import { useFonts } from 'expo-font';
 import { AuthProvider, useAuth } from "./contexts/auth.context";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { TransitionPresets, createStackNavigator } from "@react-navigation/stack";
 import Login from "./screens/Login";
 import BottomBar from "./screens/BottomBar";
 import { useCallback, useState } from "react";

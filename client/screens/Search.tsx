@@ -4,9 +4,9 @@ import { common } from '../config/style';
 import CommonView from './CommonView';
 import { NavigationProps } from '../Models/Navigation';
 import { SearchTextInput } from '../components/SearchTextInput/SearchTextInput';
-import { Destination } from '../types/Destination.types';
 import { DestinationCard } from '../components/DestinationCard/DestinationCard';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import { Destination } from '../types/destination.types';
 
 const SearchScreen = ({ navigation }: NavigationProps) => {
 

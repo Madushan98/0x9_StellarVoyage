@@ -22,7 +22,7 @@ const Login = ({navigation}:NavigationProps) => {
         }
     }
 
-    const oncange = (test: string) => { }
+    const oncange = () => { }
 
     return (
         <>
@@ -32,8 +32,8 @@ const Login = ({navigation}:NavigationProps) => {
                     <Text style={[{ color: "white" }]}>Hi Welcome Back</Text>
                 </View>
                 <View style={[common.centerVertical, { height: "20%", justifyContent: "space-around" }]}>
-                    <UserInput lable='Email' onChange={(value) => setEmail(value)} />
-                    <UserInput lable='password' onChange={(value) => setPassword(value)} />
+                    <UserInput onPress={()=>oncange()} lable='Email' onChange={(value) => setEmail(value)} />
+                    <UserInput  onPress={()=>oncange()} lable='password' onChange={(value) => setPassword(value)} />
                 </View>
                 <View style={[common.centerHorizontal, { justifyContent: 'space-between' }]}>
                     <ToggleSwitch lable='Remember Me' />

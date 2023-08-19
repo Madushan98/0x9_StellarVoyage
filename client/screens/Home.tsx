@@ -22,7 +22,9 @@ const Home = () => {
         />
       </View>
       <View style={[common.centerVertical, styles.searchContainer]}>
-        <SearchTextInput lable='Where are you going next' onChange={onChange} />
+        <SearchTextInput lable='Where are you going next' onChange={onChange} onPress={function (): void {
+          throw new Error('Function not implemented.');
+        } } />
       </View>
       <View style={styles.planetContainer}>
         <PlanetCard></PlanetCard>
