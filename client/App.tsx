@@ -6,11 +6,10 @@ import { AuthProvider, useAuth } from "./contexts/auth.context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "./screens/Login";
-import Register from "./screens/Register";
-
 import BottomBar from "./screens/BottomBar";
 import { useCallback, useState } from "react";
 import * as SplashScreen from 'expo-splash-screen';
+import Register from "./screens/Register";
 
 const Stack = createStackNavigator();
 
