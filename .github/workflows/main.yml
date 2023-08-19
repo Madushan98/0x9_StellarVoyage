@@ -59,4 +59,5 @@ jobs:
             docker stop backend-api || true
             docker rm backend-api || true
             docker pull madman98/0x9stellervoyage:latest
-            docker run -e DBUSERNAME=${DBUSERNAME} -e DBPASSWORD=${DBPASSWORD} -e SMTPUSERNAME=${SMTPUSERNAME} -e SMTPPASSWORD=${SMTPPASSWORD} -d -p 8080:8080 --name backend-api madman98/0x9stellervoyage:latest
+            docker run -e DBUSERNAME=${{secrets.DBUSERNAME}} -e DBPASSWORD=${{secrets.DBPASSWORD}} -e SMTPUSERNAME=${{secrets.SMTPUSERNAME}} -e SMTPPASSWORD=${{secrets.SMTPPASSWORD}} -d -p 8080:8080 --name backend-api madman98/0x9stellervoyage:latest
+

@@ -1,5 +1,5 @@
 import React, {createContext, useState, useEffect, useContext} from 'react';
-import {RegisterUser, LoginUser} from '../types/auth.type';
+import {RegisterUser, LoginUser, EmailVerification} from '../types/auth.type';
 import {User} from '../types/user.type';
 import * as SecureStore from 'expo-secure-store';
 import axios from 'axios';
@@ -11,7 +11,7 @@ import SplashScreenComponent from '../screens/Splash';
 interface AuthContextData {
     authState?: { token: string | null; authenticated: boolean | null };
     onRegister?: (registerUser: RegisterUser) => Promise<any>;
-    onVerify?: () => Promise<any>;
+    onVerify?: (emailVerification: EmailVerification) => Promise<any>;
     onLogin?: (loginUser: LoginUser) => Promise<any>;
     onLogout?: () => Promise<any>;
 }
@@ -35,10 +35,11 @@ export const AuthProvider = ({children}: any) => {
     useEffect(() => {
         const loadToken = async () => {
             try {
-                const token = await SecureStore.getItemAsync('token1');
+                const token = await SecureStore.getItemAsync('token');
                 const userId = await SecureStore.getItemAsync('user').then((user) => {
                     return user ? JSON.parse(user).id : null;
                 });
+                
                 if (token) {
                     setAuthState({
                         token,
@@ -67,6 +68,24 @@ export const AuthProvider = ({children}: any) => {
         try {
             const result = await api.post('/auth/register', registerUser);
 
+            await SecureStore.setItemAsync('userEmail', JSON.stringify(result.data.email));
+            return result;
+
+        } catch (error) {
+            return {error: true, message: (error as any).response.data.message};
+        }
+    };
+
+    const verify = async (emailVerification: EmailVerification) => {
+        try {
+            const result = await api.post('/auth/verifyEmail', emailVerification);
+             setAuthState({
+                token: result.data.access_token,
+                userId: result.data.id,
+                authenticated: true,
+            });
+            api.defaults.headers.common['Authorization'] = `Bearer ${result.data.accessToken}`;
+            await SecureStore.setItemAsync('token', result.data.access_token);
             await SecureStore.setItemAsync('user', JSON.stringify(result.data));
             return result;
 
@@ -74,6 +93,7 @@ export const AuthProvider = ({children}: any) => {
             return {error: true, message: (error as any).response.data.message};
         }
     };
+
 
     const login = async (loginUser: LoginUser) => {
         try {
@@ -108,6 +128,7 @@ export const AuthProvider = ({children}: any) => {
         onRegister: register,
         onLogin: login,
         onLogout: logout,
+        onVerify: verify,
         authState,
     };
 

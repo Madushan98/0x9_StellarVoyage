@@ -10,6 +10,7 @@ import BottomBar from "./screens/BottomBar";
 import { useCallback, useState } from "react";
 import * as SplashScreen from 'expo-splash-screen';
 import Register from "./screens/Register";
+import EmailVerification from "./screens/EmailVerification";
 import Home from "./screens/Home";
 import SearchPage from "./screens/Search";
 import SearchScreen from "./screens/Search";
@@ -46,12 +47,23 @@ export const Layout = () => {
   const { authState, onLogout } = useAuth();
   return (
     <NavigationContainer>
-      <Stack.Navigator>{authState?.authenticated ? (
-        <Stack.Screen name="Main" options={{ headerShown: false }} component={BottomBar} />
+      <Stack.Navigator
+       screenOptions={{
+        headerShown: false,
+        cardStyle: { backgroundColor: 'white' },
+        ...TransitionPresets.SlideFromRightIOS, // Apply fade transition
+          transitionSpec: {
+          open: { animation: 'timing', config: { duration: 400 } }, // Increase the duration as needed
+          close: { animation: 'timing', config: { duration: 400 } }, // Increase the duration as needed
+        },
+      }}
+      >{authState?.authenticated ? (
+        <Stack.Screen name="Main" component={BottomBar} />
       ) : (
-        <Stack.Screen name="Login" options={{ headerShown: false }} component={SearchScreen} />
+        <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
       )}
-        <Stack.Screen name="Register"  options={{ headerShown: false }} component={Register} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="EmailVerification" component={EmailVerification} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -85,6 +85,12 @@ public class DestinationService {
                 ).toList();
     }
 
+    public List<String> getAllDestinationNames(){
+        List<Destination> destinations = destinationRepository.findAll();
+        return destinations.stream().map(Destination::getName
+        ).toList();
+    }
+
     public DestinationResponse mapDestinationToResponse(Destination destination){
         return DestinationResponse.builder()
                 .name(destination.getName())
