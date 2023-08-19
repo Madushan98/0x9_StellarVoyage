@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import color from "../../config/color";
-import { UserInputModel } from "../../Models/Input";
+import { UserInputLableModel } from "../../Models/Input";
 
 
-export const UserInput= ({lable,onChange}:UserInputModel) => {
+export const UserInput= ({lable,onChange}:UserInputLableModel) => {
   return (
     <View style={[styles.container]}>
       <View style={styles.userInputArea}>
@@ -19,7 +19,7 @@ export const UserInput= ({lable,onChange}:UserInputModel) => {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
-    width:"90%",
+    width:"100%",
     paddingVertical: 8,
     alignItems: "center",
     justifyContent: "flex-start",
@@ -34,6 +34,6 @@ const styles = StyleSheet.create({
     fontWeight:"500",
     paddingTop:2,
   },
-  userInputArea:{width:"100%"},
+  userInputArea:{width:"100%",},
   text: { fontFamily:"Mulish", fontSize: 12,fontWeight:"700" },
 });

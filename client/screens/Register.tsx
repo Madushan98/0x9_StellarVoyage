@@ -7,10 +7,10 @@ import { UserInput } from '../components/UserInputCard/UserInput';
 import { View, Text, TextInput, Button } from 'react-native';
 import CommonView from './CommonView';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { DontHaveAccountScreenProps } from '../Models/Navigation';
+import { NavigationProps } from '../Models/Navigation';
 
 
-const Register = ({ navigation }:DontHaveAccountScreenProps) => {
+const Register = ({ navigation }:NavigationProps) => {
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');

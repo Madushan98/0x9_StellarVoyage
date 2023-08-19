@@ -11,7 +11,13 @@ export const  common = StyleSheet.create({
         width:"85%",
         display:'flex',
         flexDirection:"row",
-        alignItems:"center"
+        alignItems:"center",
+      },
+      centeEndrHorizontal: {
+        width:"85%",
+        display:'flex',
+        flexDirection:"row",
+        alignItems:"flex-end",
       },
     middleArea:{
         width:"95%",
@@ -34,15 +40,24 @@ export const  commonColor = StyleSheet.create({
     white: {
       color:"white"
     },
-    mainTitle:{
-        fontSize:32,
-        fontWeight:"700",
-        fontFamily:"Mulish"
-    }
+    
   });
 
   export const commonFonts = StyleSheet.create({
     mulish:{
         fontFamily:"Mulish"
-    }
+    },
+    montserrat:{
+        fontFamily:"Montserrat"
+    },
+    mainTitle:{
+      fontSize:32,
+      fontWeight:"700",
+      fontFamily:"Mulish"
+  },
+  profile:{
+    fontSize:40,
+    fontFamily:"Montserrat",
+    weight:"700"
+  }
   })

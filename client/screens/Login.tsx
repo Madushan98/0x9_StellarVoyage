@@ -8,8 +8,9 @@ import { ImageButton } from '../components/ImageButton/ImageButton';
 import { MainButton } from '../components/MainButton/MainButton';
 import icon from '../config/icon';
 import CommonView from './CommonView';
+import { NavigationProps } from '../Models/Navigation';
 
-const Login = ({navigation}) => {
+const Login = ({navigation}:NavigationProps) => {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const { onLogin } = useAuth();
