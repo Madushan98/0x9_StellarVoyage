@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/auth.context';
 import { common, commonColor, commonFonts } from '../config/style';
@@ -7,10 +6,10 @@ import { UserInput } from '../components/UserInputCard/UserInput';
 import { View, Text, TextInput, Button } from 'react-native';
 import CommonView from './CommonView';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { DontHaveAccountScreenProps } from '../Models/Navigation';
+import { NavigationProps } from '../Models/Navigation';
 
 
-const Register = ({ navigation }:DontHaveAccountScreenProps) => {
+const Register = ({ navigation }:NavigationProps) => {
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -19,6 +18,7 @@ const Register = ({ navigation }:DontHaveAccountScreenProps) => {
     const { onRegister } = useAuth();
 
     const handleRegister = async () => {
+        navigation.navigate('EmailVerification');
         if (!name || !email || !password || !confirmPassword) {
             setError('All fields are required');
             return;
@@ -30,9 +30,11 @@ const Register = ({ navigation }:DontHaveAccountScreenProps) => {
         }
 
         const result = await onRegister!({ name, email, password });
+
         if (result?.error) {
             setError(result.message);
         }
+        navigation.navigate('EmailVerification');
     };
 
     const oncange = (test: string) => { }
@@ -46,7 +48,7 @@ const Register = ({ navigation }:DontHaveAccountScreenProps) => {
                     <Text style={[{ color: "white" }]}>Let’s Create Your Account !</Text>
                 </View>
                 <View style={[common.centerVertical, { height: "40%", justifyContent: "space-around" }]}>
-                    <UserInput lable='Email' onChange={(value) => setName(value)} />
+                    <UserInput lable='Name' onChange={(value) => setName(value)} />
                     <UserInput lable='Email' onChange={(value) => setEmail(value)} />
                     <UserInput lable='password' onChange={(value) => setPassword(value)} />
                     <UserInput lable='Cofirem Password' onChange={(value) => setConfirmPassword(value)} />

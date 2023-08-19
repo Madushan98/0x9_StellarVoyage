@@ -10,5 +10,8 @@ export interface BookingInfoResponse {
   flightId: string;
   passengers: number;
   totalPrice: number;
+  from: string;
+  to: string;
+  departureDate: string;
+  departureTime: string;
 }
-

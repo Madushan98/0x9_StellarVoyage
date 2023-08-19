@@ -10,6 +10,7 @@ import BottomBar from "./screens/BottomBar";
 import { useCallback, useState } from "react";
 import * as SplashScreen from 'expo-splash-screen';
 import Register from "./screens/Register";
+import EmailVerification from "./screens/EmailVerification";
 
 const Stack = createStackNavigator();
 
@@ -59,6 +60,7 @@ export const Layout = () => {
         <Stack.Screen name="Login" component={Login} />
       )}
         <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="EmailVerification" component={EmailVerification} />
       </Stack.Navigator>
     </NavigationContainer>
   );
