@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
     fontFamily: "Mazzard",
     fontSize: 16,
     fontWeight:"500",
-    outlineWidth: 1,
     paddingTop:2,
   },
   userInputArea:{width:"100%"},

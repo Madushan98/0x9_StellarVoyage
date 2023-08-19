@@ -1,6 +1,10 @@
+
+import React, { useEffect, useState } from 'react';
+import { useAuth } from '../contexts/auth.context';
+import { common, commonColor, commonFonts } from '../config/style';
+import { MainButton } from '../components/MainButton/MainButton';
+import { UserInput } from '../components/UserInputCard/UserInput';
 import {View, Text, TextInput, Button} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {useAuth} from '../contexts/auth.context';
 
 
 const Register = () => {
@@ -28,15 +32,26 @@ const Register = () => {
         }
     };
 
+    const oncange = (test: string) => { }
+
+
     return (
-        <View>
-            <TextInput placeholder="Email" onChangeText={setName}/>
-            <TextInput placeholder="Email" onChangeText={setEmail}/>
-            <TextInput placeholder="Password" secureTextEntry={true} onChangeText={setPassword}/>
-            <TextInput placeholder="ConfirmPassword" secureTextEntry={true} onChangeText={setConfirmPassword}/>
-            {error ? <Text>{error}</Text> : null}
-            <Button title="Register" onPress={handleRegister}/>
-        </View>
+        <>
+            <View style={[common.middleArea, common.topArea]}>
+                <Text style={[common.mainTitle, { color: "white",marginBottom:12  }]}>Sign Up</Text>
+                <Text style={[{ color: "white" }]}>Let’s Create Your Account !</Text>
+            </View>
+            <View style={[common.centerVertical, { height: "40%", justifyContent: "space-around" }]}>
+            <UserInput lable='Email' onChange={(value)=>setName(value)} />
+                <UserInput lable='Email' onChange={(value)=>setEmail(value)} />
+                <UserInput lable='password' onChange={(value)=>setPassword(value)} />
+                <UserInput lable='Cofirem Password' onChange={(value)=>setConfirmPassword(value)} />
+            </View>
+            <View style={[common.centerVertical, { height: "30%", justifyContent: "space-around" }]}>
+                <MainButton text='SIGN UP' onPress={handleRegister} />
+                <Text style={[commonColor.white, commonFonts.mulish]}>Already have an account?</Text>
+            </View>
+        </>
     )
 }
 

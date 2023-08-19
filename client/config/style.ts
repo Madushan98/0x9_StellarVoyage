@@ -26,7 +26,7 @@ export const  common = StyleSheet.create({
         fontFamily:"Mulish"
     },
     topArea:{
-        height:"32%"
+        height:"28%",
     }
   });
 
