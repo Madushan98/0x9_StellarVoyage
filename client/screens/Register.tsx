@@ -31,7 +31,9 @@ const Register = ({ navigation }:NavigationProps) => {
             if (result?.error) {
                 alert(result.message);
             }else{
-                navigation.navigate('EmailVerification');
+                navigation.navigate('EmailVerification', {
+                    email: email,
+                });
             }
 };
 

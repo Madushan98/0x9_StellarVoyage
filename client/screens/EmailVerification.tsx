@@ -17,7 +17,9 @@ import {
 
 const CELL_COUNT = 6;
 
-const EmailVerification = ({navigation}) => {
+const EmailVerification = ({route,navigation}) => {
+
+    const {email} = route.params;
 
     const [value, setValue] = useState('');
     const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
@@ -28,7 +30,8 @@ const EmailVerification = ({navigation}) => {
     const {onVerify} = useAuth();
 
     const handleVerification = async () => {
-        const userEmail = await SecureStore.getItemAsync('userEmail');
+        const userEmail = email;
+        console.log(userEmail);
         if (!userEmail) {
             navigation.navigate('Login');
         }
@@ -37,7 +40,6 @@ const EmailVerification = ({navigation}) => {
         }
         const verificationCode = value;
         const result = await onVerify!({verificationCode, userEmail});
-        console.log(result);
         if (result?.error) {
             alert(result.message);
         }

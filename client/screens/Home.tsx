@@ -27,7 +27,7 @@ const Home = ({navigation}:NavigationProps) => {
                 api.defaults.headers.common['Authorization'] = `Bearer ${token}`; 
                 const userResponse = await api.get(`/user/${id}`);
                 setUser(userResponse.data.name);
-                console.log(user);
+
                 // Fetch all detination names
                 const response = await api.get('/destinations/all');
                 // let data = await JSON.parse(response.data)

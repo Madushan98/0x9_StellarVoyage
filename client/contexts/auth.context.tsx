@@ -35,6 +35,7 @@ export const AuthProvider = ({children}: any) => {
     useEffect(() => {
         const loadToken = async () => {
             try {
+                await SecureStore.deleteItemAsync('token');
                 const token = await SecureStore.getItemAsync('token');
                 const userId = await SecureStore.getItemAsync('user').then((user) => {
                     return user ? JSON.parse(user).id : null;
@@ -70,7 +71,7 @@ export const AuthProvider = ({children}: any) => {
                 return {error: true, message: result.data.message};
             }
             await SecureStore.setItemAsync('userEmail', registerUser.email);
-            return result;
+            return registerUser;
         } catch (error) {
             return {error: true, message: (error as any).response.data.message};
         }
@@ -78,16 +79,15 @@ export const AuthProvider = ({children}: any) => {
 
     const verify = async (emailVerification: EmailVerification) => {
         try {
-            const result = await api.post('/auth/verifyEmail', emailVerification);
-            console.log(result);
-             setAuthState({
+            const result = await api.post(`/auth/verifyEmail?userEmail=${emailVerification.userEmail}&verificationCode=${emailVerification.verificationCode}`,);
+            api.defaults.headers.common['Authorization'] = `Bearer ${result.data.accessToken}`;
+            await SecureStore.setItemAsync('token', result.data.access_token);
+            await SecureStore.setItemAsync('user', JSON.stringify(result.data));
+            setAuthState({
                 token: result.data.access_token,
                 userId: result.data.id,
                 authenticated: true,
             });
-            api.defaults.headers.common['Authorization'] = `Bearer ${result.data.accessToken}`;
-            await SecureStore.setItemAsync('token', result.data.access_token);
-            await SecureStore.setItemAsync('user', JSON.stringify(result.data));
             return result;
 
         } catch (error) {
