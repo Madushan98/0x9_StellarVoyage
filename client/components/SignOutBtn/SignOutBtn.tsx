@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 32,
     height: 50,
-    width:"40%",
+    width:"60%",
     paddingVertical: 8,
     backgroundColor: color.buttonBlue,
     alignItems: "center",

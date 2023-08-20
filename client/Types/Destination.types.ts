@@ -1,4 +1,5 @@
 export  interface Destination{
+    id?:number
     name:string,
     // image:any,
     culture:string,
