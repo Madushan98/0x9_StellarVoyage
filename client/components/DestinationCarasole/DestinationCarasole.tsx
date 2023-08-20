@@ -7,28 +7,31 @@ import { Destination } from '../../types/destination.types';
 
 
 interface carasolDataProp{
-  data:Destination[]
+  destinations:Destination[]
 }
 
-const DestinationCarousel = ({data}:carasolDataProp) => {
+const DestinationCarousel = ({destinations}:carasolDataProp) => {
+  let finalData:Destination[] = destinations.map((obj,index)=>({...obj,id:index+1}))
 
-//     const data = [
-//   { id: 1, climate: 'adadad' },
-//   { id: 2, climate: 'adadad' },
-//   { id: 3, climate: 'adadad' },
-// ];
+  const data = [
+    { id: 1, title: 'Item 1' },
+    { id: 2, title: 'Item 2' },
+    { id: 3, title: 'Item 3' },
+    // Add more items as needed
+  ];
 
-   const renderItem = (item:Destination) => (
-      <DestinationCard climate={item.climate} name={"tem.name"} culture={"item.culture"} touristAttractions={"asdas"} planet={"earth"} />
-  );
-
+   const renderItems = (item:any) => {
+      console.log(item);
+      return (<DestinationCard climate={item.climate} name={"tem.name"} culture={"item.culture"} touristAttractions={"asdas"} planet={"earth"} />) 
+};
+  if(finalData.length<0)return;
   return (
     <Carousel
     layout={'stack'} 
-      data={data}
+      data={finalData}
       contentContainerCustomStyle={{display:"flex",flexDirection:"row",justifyContent:"center",marginLeft:20,top:12}}
       layoutCardOffset={12}
-      renderItem={renderItem}
+      renderItem={renderItems}
       sliderWidth={500}
       itemWidth={370}
     />
