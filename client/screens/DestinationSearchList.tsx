@@ -56,9 +56,6 @@ const styles = StyleSheet.create({
         ...common.middleArea,
         justifyContent:"flex-end"
     },
-    center:{
-        
-    }
   });
 
 export default DestinationSearchList;

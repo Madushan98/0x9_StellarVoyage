@@ -34,7 +34,7 @@ export const PricingCard = ({flightId,flightMode,departureDate,arrivalDate,price
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 32,
-    width:"80%",
+    width:"85%",
     paddingVertical: 12,
     backgroundColor: color.paperWhite,
     alignItems: "center",
