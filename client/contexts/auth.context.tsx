@@ -79,17 +79,15 @@ export const AuthProvider = ({children}: any) => {
 
     const verify = async (emailVerification: EmailVerification) => {
         try {
-            console.log(emailVerification);
-            const result = await api.post(`/auth/verifyEmail?userEmail=${emailVerification.userEmail}%40gmail.com&verificationCode=${emailVerification.verificationCode}`,);
-            console.log(result);
-             setAuthState({
+            const result = await api.post(`/auth/verifyEmail?userEmail=${emailVerification.userEmail}&verificationCode=${emailVerification.verificationCode}`,);
+            api.defaults.headers.common['Authorization'] = `Bearer ${result.data.accessToken}`;
+            await SecureStore.setItemAsync('token', result.data.access_token);
+            await SecureStore.setItemAsync('user', JSON.stringify(result.data));
+            setAuthState({
                 token: result.data.access_token,
                 userId: result.data.id,
                 authenticated: true,
             });
-            api.defaults.headers.common['Authorization'] = `Bearer ${result.data.accessToken}`;
-            await SecureStore.setItemAsync('token', result.data.access_token);
-            await SecureStore.setItemAsync('user', JSON.stringify(result.data));
             return result;
 
         } catch (error) {

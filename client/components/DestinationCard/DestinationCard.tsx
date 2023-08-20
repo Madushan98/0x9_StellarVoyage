@@ -19,12 +19,6 @@ export const DestinationCard = ({climate,culture,name,planet,touristAttractions}
         )
     }
 
-    useEffect(() => {
-      console.log("DestinationCard")
-      console.log({climate,culture,name,planet,touristAttractions})
-    }, [climate,culture,name,planet,touristAttractions])
-
-
   return (
     <View style={styles.container}>
         <View style={styles.titleContainer}>
