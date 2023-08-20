@@ -31,7 +31,6 @@ const EmailVerification = ({route,navigation}) => {
 
     const handleVerification = async () => {
         const userEmail = email;
-        console.log(userEmail);
         if (!userEmail) {
             navigation.navigate('Login');
         }
