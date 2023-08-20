@@ -5,7 +5,7 @@ import Carousel from 'react-native-snap-carousel';
 import { DestinationCard } from '../DestinationCard/DestinationCard';
 
 interface DestinationCarouselProps {
-  destinations: Destination[]; 
+  destinations: Destination[];
 }
 
 const DestinationCarousel: React.FC<DestinationCarouselProps> = ({ destinations }) => {
@@ -21,10 +21,13 @@ const DestinationCarousel: React.FC<DestinationCarouselProps> = ({ destinations 
 
   return (
     <Carousel
+      layout='stack'
       data={destinations}
+      contentContainerCustomStyle={{display:"flex",flexDirection:"row",justifyContent:"center",marginLeft:2,top:12}}
+      layoutCardOffset={12}
+      sliderWidth={500}
+      itemWidth={330}
       renderItem={({ item }) => renderItem(item)}
-      sliderWidth={300}
-      itemWidth={300}
     />
   );
 };

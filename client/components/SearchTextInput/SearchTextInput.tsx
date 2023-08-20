@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, TextInput } from "react-native";
-import { UserInputLableModel, UserSearchlableModel } from "../../Models/Input";
+import { UserInputLableModel } from "../../Models/Input";
 import Ionicons from "@expo/vector-icons/Ionicons"
 import { TouchableOpacity } from "react-native-gesture-handler";
 

@@ -30,7 +30,9 @@ const Home = ({navigation}:NavigationProps) => {
                 console.log(user);
                 // Fetch all detination names
                 const response = await api.get('/destinations/all');
+                // let data = await JSON.parse(response.data)
                 setDestinations(response.data);
+              
             } catch (error: any) {
                 alert(error.message);
             } finally {
@@ -70,8 +72,8 @@ const Home = ({navigation}:NavigationProps) => {
       <View style={styles.planetContainer}>
         <PlanetCard></PlanetCard>
       </View>
-       <View>
-        <DestinationCarousel destinations={destinations} /> 
+       <View style={[{height:"36%"}]}>
+         <DestinationCarousel destinations={destinations} /> 
       </View>
     </CommonView>
   )

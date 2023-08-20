@@ -2,7 +2,7 @@ import {StyleSheet } from 'react-native'
 
 export const common = StyleSheet.create({
   centerVertical: {
-    width: "96%",
+    width: "94%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
