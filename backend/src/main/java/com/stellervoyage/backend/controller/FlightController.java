@@ -34,7 +34,7 @@ public class FlightController {
     }
 
     @PostMapping("/search")
-    public ResponseEntity<List<FlightResponse>> getStudents(@RequestBody FlightSearchRequest request) {
+    public ResponseEntity<List<FlightResponse>> searchFlight(@RequestBody FlightSearchRequest request) {
        return  ResponseEntity.ok(flightService.getFlightResults(request));
     }
     @GetMapping("/all")
