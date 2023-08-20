@@ -14,14 +14,21 @@ const SearchScreen = ({ navigation }: NavigationProps) => {
         {
           name: "Paris",
           culture: "European",
-          climate: "Temperate",
+          climate: "Immerse yourself in the mysteries of Neptune's moon and its dynamic geysers.",
           touristAttractions: "Eiffel Tower, Louvre Museum",
           planet: "Earth"
         },
         {
           name: "Tokyo",
           culture: "Japanese",
-          climate: "Temperate",
+          climate: "Immerse yourself in the mysteries of Neptune's moon and its dynamic geysers.",
+          touristAttractions: "Shibuya Crossing, Tokyo Tower",
+          planet: "Earth"
+        },
+        {
+          name: "Ausri",
+          culture: "Japanese",
+          climate: "Immerse yourself in the mysteries of Neptune's moon and its dynamic geysers.",
           touristAttractions: "Shibuya Crossing, Tokyo Tower",
           planet: "Earth"
         }
@@ -52,14 +59,16 @@ const SearchScreen = ({ navigation }: NavigationProps) => {
                 <View style={[common.centerVertical,styles.searchContainer]}>
                     <SearchTextInput onPress={()=>searchHandler()} lable='Where are you going next' onChange={onChange} />
                 </View>
-                <View style={[common.centerVertical,{height:"60%"}]}>
+                <View style={[common.centerVertical,{flex:1}]}>
                     {/* <FlatList
                         data={desti}
                         renderItem={renderItems}
                     /> */}
-                    <ScrollView  showsVerticalScrollIndicator={false}>
+                    <ScrollView style={[{flex:1}]} contentContainerStyle={common.centerVertical}  >
                     {destinations.map((data:Destination,index)=>(
-                        <DestinationCard key={index} {...data}/>
+                        <View style={{marginBottom:16}} key={index} >
+                          <DestinationCard{...data}/>
+                        </View>
                     ))}
                     </ScrollView>
                 </View>

@@ -5,6 +5,7 @@ import planetImg from '../../config/image'
 import { Destination } from "../../types/destination.types";
 import planets from "../../config/planetIcon"
 import { IconButton } from "../IconButton/IconButton";
+import { common, commonFonts } from "../../config/style";
 
 
 export const DestinationCard = ({climate,culture,name,planet,touristAttractions}:Destination) => {
@@ -94,7 +95,8 @@ const styles = StyleSheet.create({
     flexDirection:"column",
     justifyContent:"flex-start",
     alignItems:"flex-start",
-    height:"32%"
+    height:"32%",
+    overflow:"hidden"
   },
   icon:{
     fontSize:32,
@@ -109,14 +111,14 @@ const styles = StyleSheet.create({
   },
   detailBoxTitle:{
     fontSize:11,
-    fontWeight:"600",
-    fontFamily:"Montserrat",
+    fontWeight:"700",
+    ...commonFonts.monserrata,
     color:"white"
   },
   detailBoxInfor:{
     fontSize:11,
-    fontFamily:'Montserrat',
-    fontWeight:"400",
+    ...commonFonts.monserrata,
+    fontWeight:"700",
     color:color.destinationDetail,
   },
   actionBox:{
