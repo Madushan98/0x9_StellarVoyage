@@ -36,7 +36,7 @@ const DestinationSearchList = ({ route, navigation }) => {
             <View style={[common.centerVertical,{flex:1}]}>
                 <FlatList
                     style={[{ flex: 1 }]} 
-                    contentContainerStyle={[common.centerVertical,{width:"100%",marginLeft:32}]}
+                    contentContainerStyle={[common.centerVertical,{width:"90%",marginLeft:0}]}
                     data={destinations}
                     renderItem={({ item }) => renderItem(item)}
                     keyExtractor={(item, index) => index.toString()}
