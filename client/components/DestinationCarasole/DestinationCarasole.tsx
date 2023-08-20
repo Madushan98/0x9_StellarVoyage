@@ -4,17 +4,25 @@ import { Destination } from '../../types/destination.types';
 import Carousel from 'react-native-snap-carousel';
 import { DestinationCard } from '../DestinationCard/DestinationCard';
 
-const DestinationCarousel = (destinations:Destination[]) => {
+interface DestinationCarouselProps {
+  destinations: Destination[]; 
+}
 
-
-   const renderItem = (item:Destination) => (
-      <DestinationCard climate={item.climate} name={''} culture={''} touristAttractions={''} planet={''} />
+const DestinationCarousel: React.FC<DestinationCarouselProps> = ({ destinations }) => {
+  const renderItem = (item: Destination) => (
+    <DestinationCard
+      climate={item.climate}
+      name={item.name}
+      culture={item.culture}
+      touristAttractions={item.touristAttractions}
+      planet={item.planet}
+    />
   );
 
   return (
     <Carousel
       data={destinations}
-      renderItem={({item}) => renderItem(item)}
+      renderItem={({ item }) => renderItem(item)}
       sliderWidth={300}
       itemWidth={300}
     />
