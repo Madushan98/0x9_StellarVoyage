@@ -30,7 +30,7 @@ const FlightSearchList = ({route, navigation}) => {
             <View>
                 <FlatList
                     data={flightList}
-                    renderItem={renderItem}
+                    renderItem={({item}) => renderItem(item)}
                     keyExtractor={(item, index) => index.toString()}
                 />
             </View>
