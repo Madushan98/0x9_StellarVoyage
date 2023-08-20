@@ -7,6 +7,7 @@ import {View, Text, StyleSheet, TextInput, Button} from 'react-native';
 import CommonView from './CommonView';
 import {StackNavigationProp} from '@react-navigation/stack';
 import * as SecureStore from 'expo-secure-store';
+
 import {
     CodeField,
     Cursor,
@@ -30,16 +31,15 @@ const EmailVerification = ({navigation}) => {
         const userEmail = await SecureStore.getItemAsync('userEmail');
         if (!userEmail) {
             navigation.navigate('Login');
-            return;
         }
         if(!value) {
             alert('Fill in the verification code');
-            return;
         }
         const verificationCode = value;
         const result = await onVerify!({verificationCode, userEmail});
+        console.log(result);
         if (result?.error) {
-            alert(result.message)
+            alert(result.message);
         }
     }
 
