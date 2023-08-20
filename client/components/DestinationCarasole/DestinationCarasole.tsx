@@ -21,10 +21,13 @@ const DestinationCarousel: React.FC<DestinationCarouselProps> = ({ destinations 
 
   return (
     <Carousel
+      layout='stack'
       data={destinations}
+      contentContainerCustomStyle={{display:"flex",flexDirection:"row",justifyContent:"center",marginLeft:20,top:12}}
+      layoutCardOffset={12}
+      sliderWidth={500}
+      itemWidth={370}
       renderItem={({ item }) => renderItem(item)}
-      sliderWidth={300}
-      itemWidth={300}
     />
   );
 };

@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import {View, Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import CommonView from './CommonView';
-import {common} from '../config/style';
-import {PricingCard} from '../components/PricingCard/PricingCard';
+import { common } from '../config/style';
+import { PricingCard } from '../components/PricingCard/PricingCard';
 import { Destination } from '../types/destination.types';
 import { DestinationCard } from '../components/DestinationCard/DestinationCard';
 
-const DestinationSearchList = ({route, navigation}) => {
-    const {destinations} = route.params;
+const DestinationSearchList = ({ route, navigation }) => {
+    const { destinations } = route.params;
 
     useEffect(() => {
         console.log(destinations)
@@ -20,28 +20,45 @@ const DestinationSearchList = ({route, navigation}) => {
     }
 
     const renderItem = (item: Destination) => (
-        <TouchableOpacity onPress={(evt) => {
+        <TouchableOpacity style={[{marginBottom:16}]} onPress={(evt) => {
             destinationHandler(item);
         }}>
-            <DestinationCard name={item.name} culture={item.culture} climate={item.climate} 
-            touristAttractions={item.touristAttractions} planet="Earth" />
-        </TouchableOpacity>    
+            <DestinationCard name={item.name} culture={item.culture} climate={item.climate}
+                touristAttractions={item.touristAttractions} planet="Earth" />
+        </TouchableOpacity>
     );
 
     return (
         <CommonView>
-            <View style={[common.middleArea, common.topArea]}>
-                <Text style={[common.mainTitle, {color: 'white', marginBottom: 12}]}>Search Result</Text>
+            <View style={[styles.title, {height:120}]}>
+                <Text style={[common.mainTitle, { color: 'white', marginBottom: 12 }]}>Search Result</Text>
             </View>
-            <View>
+            <View style={[common.centerVertical,{flex:1}]}>
                 <FlatList
+                    style={[{ flex: 1 }]} 
+                    contentContainerStyle={[common.centerVertical,{width:"100%",marginLeft:32}]}
                     data={destinations}
-                    renderItem={({item}) => renderItem(item)}
+                    renderItem={({ item }) => renderItem(item)}
                     keyExtractor={(item, index) => index.toString()}
                 />
             </View>
         </CommonView>
     );
 };
+
+const styles = StyleSheet.create({
+
+    searchContainer: {
+      justifyContent: "flex-start",
+      height:120
+    },
+    title:{
+        ...common.middleArea,
+        justifyContent:"flex-end"
+    },
+    center:{
+        
+    }
+  });
 
 export default DestinationSearchList;
