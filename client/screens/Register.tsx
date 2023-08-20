@@ -28,16 +28,15 @@ const Register = ({ navigation }:NavigationProps) => {
             return;
         }
 
-        const result = await onRegister!({ name, email, password });
-
-        if (result?.error) {
-            setError(result.message);
-        }
-        navigation.navigate('EmailVerification');
+        const result = await onRegister!({ name, email, password }).then((result) => {
+            if (result?.error) {
+                setError(result.message);
+            }
+            navigation.navigate('EmailVerification');
+        });
+        
+    
     };
-
-    const oncange = (test: string) => { }
-
 
     return (
         <>

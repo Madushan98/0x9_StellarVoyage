@@ -1,13 +1,33 @@
 import { View, Text, StyleSheet, ImageBackground,Animated } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import CommonView from './CommonView';
 import { common, commonColor, commonFonts } from '../config/style';
 import image from '../config/image';
 import { SearchTextInput } from '../components/SearchTextInput/SearchTextInput';
 import { PlanetCard } from '../components/PlanetCard/PlanetCard';
+import DestinationCarousel from '../components/DestinationCarasole/DestinationCarasole';
+import { api } from '../api/api';
+import { Destination } from '../types/destination.types';
 
 
 const Home = () => {
+  const [destinations, setDestinations] = React.useState<Destination[]>([]);
+  const [loading, setLoading] = React.useState<boolean>(true);
+
+  useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // Fetch all detination names
+                const response = await api.get('/destinations/all');
+                setDestinations(response.data);
+            } catch (error: any) {
+                alert(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, []);
 
   function onChange(text: string) { }
 
@@ -28,6 +48,9 @@ const Home = () => {
       </View>
       <View style={styles.planetContainer}>
         <PlanetCard></PlanetCard>
+      </View>
+       <View>
+        <DestinationCarousel destinations={destinations} /> 
       </View>
     </CommonView>
   )

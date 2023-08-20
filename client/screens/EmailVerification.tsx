@@ -27,10 +27,13 @@ const EmailVerification = ({navigation}) => {
     const {onVerify} = useAuth();
 
     const handleVerification = async () => {
-
         const userEmail = await SecureStore.getItemAsync('userEmail');
         if (!userEmail) {
             navigation.navigate('Login');
+            return;
+        }
+        if(!value) {
+            alert('Fill in the verification code');
             return;
         }
         const verificationCode = value;
