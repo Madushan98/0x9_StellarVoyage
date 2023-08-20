@@ -28,7 +28,7 @@ public class AuthController {
         return ResponseEntity.ok(service.login(request));
     }
 
-    @GetMapping("/verifyEmail")
+    @PostMapping("/verifyEmail")
     public ResponseEntity<LoginResponse> verifyUser(VerifyUserRequest request) {
         return ResponseEntity.ok(service.verifyEmail(request));
     }
