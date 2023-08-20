@@ -1,6 +1,7 @@
 
 # 0x9_StellarVoyage Tech-Triathlon Hackathon Challenge
 ## Intergalactic Space Travel Booking Application
+![UI MOCKUPS](https://github.com/Madushan98/0x9_StellarVoyage/assets/65262773/f556ba29-61b6-47fa-a4fb-c6c7fc597b0b)
 
 The Intergalactic Space Travel Booking Application is designed to simplify and streamline the process of booking interplanetary travel tickets for citizens who wish to travel from one planet to another. This application consists of both a backend developed using the Spring Boot framework and a frontend developed using React Native, providing a seamless and user-friendly experience.
 
