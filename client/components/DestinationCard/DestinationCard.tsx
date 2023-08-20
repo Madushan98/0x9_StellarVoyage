@@ -23,7 +23,7 @@ export const DestinationCard = ({climate,culture,name,planet,touristAttractions}
   return (
     <View style={styles.container}>
         <View style={styles.titleContainer}>
-            <Image style={styles.planetImage} source={planets[planet.toLocaleLowerCase()]}/>
+            <Image style={styles.planetImage} source={planets.earth}/>
             <Text style={[styles.title]}>{name}</Text>
         </View>
         <View style={styles.detailContainer}>

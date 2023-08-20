@@ -19,7 +19,9 @@ const Home = () => {
             try {
                 // Fetch all detination names
                 const response = await api.get('/destinations/all');
-                setDestinations(response.data);
+                let data = await JSON.parse(response.data)
+                setDestinations(data);
+                console.log(destinations);
             } catch (error: any) {
                 alert(error.message);
             } finally {
@@ -49,8 +51,8 @@ const Home = () => {
       <View style={styles.planetContainer}>
         <PlanetCard></PlanetCard>
       </View>
-       <View>
-        <DestinationCarousel destinations={destinations} /> 
+       <View style={[{height:"36%"}]}>
+        {destinations.length && <DestinationCarousel data={destinations} /> }
       </View>
     </CommonView>
   )
