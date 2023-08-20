@@ -5,7 +5,6 @@ import { MainButton } from '../components/MainButton/MainButton';
 import { UserInput } from '../components/UserInputCard/UserInput';
 import { View, Text, TextInput, Button } from 'react-native';
 import CommonView from './CommonView';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { NavigationProps } from '../Models/Navigation';
 
 
