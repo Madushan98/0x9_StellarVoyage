@@ -14,7 +14,7 @@ const FlightSearchList = ({ route, navigation }) => {
     }
 
     const renderItem = (item: FlightInfo) => (
-        <TouchableOpacity onPress={flightHandler}>
+        <TouchableOpacity onPress={(evt) => {flightHandler(item);}}>
             <PricingCard flightId={item.flightId} from={item.from}
                          to={item.to} departureDate={item.departureDate} arrivalDate={item.arrivalDate}
                          returnDate={item.returnDate} travelMode={item.travelMode}

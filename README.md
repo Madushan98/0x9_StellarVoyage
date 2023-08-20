@@ -34,6 +34,8 @@ In a galaxy filled with diverse planets and cultures, the Intergalactic Space Tr
 
 - **Booking Management**: Users can view their booking history, upcoming trips, and cancel bookings if needed.
 
+-  **Email Verificaiton**: The application include user email verification for testing the verifcaiton code -**123456** can be used with any email.
+
 - **Continuous Integration and Deployment (CI/CD)**: The application's backend is integrated with a CI/CD pipeline using GitHub Actions. This automates the process of testing, building, and deploying the backend codebase to the production environment, enhancing efficiency and reducing manual errors.
   
 

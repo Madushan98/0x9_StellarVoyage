@@ -6,14 +6,18 @@ import {MainButton} from '../components/MainButton/MainButton';
 import CommonView from './CommonView';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import {api} from '../api/api';
-import { NavigationProps } from '../Models/Navigation';
 
-const FlightFilter = ({ navigation }:NavigationProps) => {
+
+const FlightFilter = ({ route,navigation }) => {
+
+    const {destination} = route.params;
+
     const [isAddDestinationModalVisible, setAddDestinationModalVisible] = useState(false);
     const [isAddDeparturenModalVisible, setAddDepartureModalVisible] = useState(false);
     const [isDatePickerVisible, setDatePickerVisible] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedDestination, setSelectedDestination] = useState<string>("");
+    const [selectedTravelMode, setSelectedTravelMode] = useState<string>("");
     const [selectedFrom, setSelectedFrom] = useState<string>("");
     const [destinations, setDestinations] = useState<string[]>([]);
     const [loading, setLoading] = useState(true);
@@ -24,6 +28,8 @@ const FlightFilter = ({ navigation }:NavigationProps) => {
                 // Fetch all detination names
                 const response = await api.get('/destinations/allNames');
                 setDestinations(response.data);
+                setSelectedDestination(destination.name);
+                
             } catch (error: any) {
                 alert(error.message);
             } finally {
@@ -101,7 +107,7 @@ const FlightFilter = ({ navigation }:NavigationProps) => {
                 <View style={[common.middleArea, common.topArea]}>
                     <Text style={[common.mainTitle, {color: 'white', marginBottom: 12}]}>Book Your Flight</Text>
                 </View>
-                <View style={[common.centerVertical, {height: '30%', justifyContent: 'space-around'}]}>
+                <View style={[common.centerVertical, {height: '20%', justifyContent: 'space-around'}]}>
                     <BookingDetailCard onPress={addDeparture} title='From'
                                        infomation={selectedFrom} iconName='airplane-outline'/>
                     <BookingDetailCard onPress={addDestination} title='Destination'

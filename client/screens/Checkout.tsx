@@ -6,16 +6,24 @@ import { MainButton } from '../components/MainButton/MainButton';
 import { CheckoutCard } from '../components/CheckoutCard/CheckoutCard';
 import { BasicCheckoutCard} from '../components/CheckoutCard/CheckoutCard.stories';
 import { api } from '../api/api';
+import * as SecureStore from 'expo-secure-store';
+import { BookingInfoRequest } from '../types/booking.type';
 
 const Checkout = ({ route, navigation }) => {
     const { flight } = route.params;
 
   const handleCheckout = async () => {
-    const result = await api.post('/booking/create', flight);
-    if (result?.error) {
-      alert(result.message);
-    }
-
+    const userId = await SecureStore.getItemAsync('user').then((user) => {
+      return user ? JSON.parse(user).id : null;
+    });
+    const bookingData: BookingInfoRequest = {
+      userId: userId,
+      flightId: flight.flightId,
+      numOfPassengers: 0
+    };
+    
+    const result = await api.post('/booking/create', bookingData);
+    navigation.navigate('Main');
   }
 
   return (
