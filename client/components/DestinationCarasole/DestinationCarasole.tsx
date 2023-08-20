@@ -13,21 +13,13 @@ interface carasolDataProp{
 const DestinationCarousel = ({destinations}:carasolDataProp) => {
   let finalData:Destination[] = destinations.map((obj,index)=>({...obj,id:index+1}))
 
-  const data = [
-    { id: 1, title: 'Item 1' },
-    { id: 2, title: 'Item 2' },
-    { id: 3, title: 'Item 3' },
-    // Add more items as needed
-  ];
-
    const renderItems = (item:any) => {
       console.log(item);
-      return (<DestinationCard climate={item.climate} name={"tem.name"} culture={"item.culture"} touristAttractions={"asdas"} planet={"earth"} />) 
+      return (<DestinationCard climate={item.climate} name={"tem.name"} culture={"item.culture"} touristAttractions={"asdas"} planet={"earth"} />)
 };
-  if(finalData.length<0)return;
   return (
     <Carousel
-    layout={'stack'} 
+    layout={'stack'}
       data={finalData}
       contentContainerCustomStyle={{display:"flex",flexDirection:"row",justifyContent:"center",marginLeft:20,top:12}}
       layoutCardOffset={12}

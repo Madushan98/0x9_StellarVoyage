@@ -8,15 +8,19 @@ import { PlanetCard } from '../components/PlanetCard/PlanetCard';
 import DestinationCarousel from '../components/DestinationCarasole/DestinationCarasole';
 import { api } from '../api/api';
 import { Destination } from '../types/destination.types';
+import * as SecureStore from 'expo-secure-store';
+import { NavigationProps } from '../Models/Navigation';
 
-
-const Home = () => {
+const Home = ({navigation}:NavigationProps) => {
   const [destinations, setDestinations] = React.useState<Destination[]>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
+  const [searchTextInput, setSearchTextInput] = React.useState<string>("");
 
   useEffect(() => {
         const fetchData = async () => {
             try {
+                const token = await SecureStore.getItemAsync('token');
+                api.defaults.headers.common['Authorization'] = `Bearer ${token}`;    
                 // Fetch all detination names
                 const response = await api.get('/destinations/all');
                 // let data = await JSON.parse(response.data)
@@ -31,7 +35,18 @@ const Home = () => {
         fetchData();
     }, []);
 
-  function onChange(text: string) { }
+  const handleSearch = async () => {
+    setLoading(true);
+    const result = await api.get(`/destinations/search?query=${searchTextInput}`,);
+    const destinationList = result.data;
+    navigation.navigate('DestinationSearchList', {
+      destinations: result.data,
+    });
+  }
+
+  const handleSearchChange = (text: string) => {
+    setSearchTextInput(text);
+  }
 
   return (
     <CommonView>
@@ -44,9 +59,7 @@ const Home = () => {
         />
       </View>
       <View style={[common.centerVertical, styles.searchContainer]}>
-        <SearchTextInput lable='Where are you going next' onChange={onChange} onPress={function (): void {
-          throw new Error('Function not implemented.');
-        } } />
+        <SearchTextInput lable='Where are you going next' onChange={handleSearchChange} onPress={handleSearch} />
       </View>
       <View style={styles.planetContainer}>
         <PlanetCard></PlanetCard>

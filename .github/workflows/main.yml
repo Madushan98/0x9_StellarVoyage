@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - master  # Adjust this to your default branch
-    # paths:
-    #   - 'backend/**'  # Only trigger on changes in the 'backend' subfolder
+    paths:
+      - 'backend/**'  # Only trigger on changes in the 'backend' subfolder
 
 jobs:
   deploy:
