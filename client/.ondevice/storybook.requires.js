@@ -14,7 +14,7 @@ global.STORIES = [
     directory: "./components",
     files: "**/*.stories.?(ts|tsx|js|jsx)",
     importPathMatcher:
-      "^\\.[\\\\/](?:components(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(?:ts|tsx|js|jsx)?)$",
+      "^\\.[\\\\/](?:components(?:[\\\\/](?!\\.)(?:(?:(?!(?:^|[\\\\/])\\.).)*?)[\\\\/]|[\\\\/]|$)(?!\\.)(?=.)[^\\\\/]*?\\.stories\\.(?:ts|tsx|js|jsx)?)$",
   },
 ];
 
@@ -49,7 +49,27 @@ try {
 
 const getStories = () => {
   return {
+    "./components/BookingDetailCard/BookingDetailCard.stories.tsx": require("../components/BookingDetailCard/BookingDetailCard.stories.tsx"),
+    "./components/BookingListCard/BookingListCard.stories.tsx": require("../components/BookingListCard/BookingListCard.stories.tsx"),
+    "./components/BookingSummaryCardSmall/BookingSummmaryCardSmall.stories.tsx": require("../components/BookingSummaryCardSmall/BookingSummmaryCardSmall.stories.tsx"),
+    "./components/BottomBar/BottomBar.stories.tsx": require("../components/BottomBar/BottomBar.stories.tsx"),
     "./components/Button/Button.stories.tsx": require("../components/Button/Button.stories.tsx"),
+    "./components/Carousel/Carousel.stories.tsx": require("../components/Carousel/Carousel.stories.tsx"),
+    "./components/CheckoutCard/CheckoutCard.stories.tsx": require("../components/CheckoutCard/CheckoutCard.stories.tsx"),
+    "./components/DestinationCard/DestinationCard.stories.tsx": require("../components/DestinationCard/DestinationCard.stories.tsx"),
+    "./components/IconButton/IconButton.stories.tsx": require("../components/IconButton/IconButton.stories.tsx"),
+    "./components/ImageButton/ImageButton.stories.tsx": require("../components/ImageButton/ImageButton.stories.tsx"),
+    "./components/LableTextInput/LableTextInput.stories.tsx": require("../components/LableTextInput/LableTextInput.stories.tsx"),
+    "./components/MainButton/MainButton.stories.tsx": require("../components/MainButton/MainButton.stories.tsx"),
+    "./components/PlanetCard/PlanetCard.stories.tsx": require("../components/PlanetCard/PlanetCard.stories.tsx"),
+    "./components/PricingCard/PricingCard.stories.tsx": require("../components/PricingCard/PricingCard.stories.tsx"),
+    "./components/RoundButton/RoundButton.stories.tsx": require("../components/RoundButton/RoundButton.stories.tsx"),
+    "./components/Switch/Switch.stories.tsx": require("../components/Switch/Switch.stories.tsx"),
+    "./components/TicketCard/TicketCard.stories.tsx": require("../components/TicketCard/TicketCard.stories.tsx"),
+    "./components/UserInputCard/UserInput.stories.tsx": require("../components/UserInputCard/UserInput.stories.tsx"),
+    "./components/ProfilePageBtn/ProfilePageBtn.stories.tsx": require("../components/ProfilePageBtn/ProfilePageBtn.stories.tsx"),
+    "./components/SignOutBtn/SignOutBtn.stories.tsx": require("../components/SignOutBtn/SignOutBtn.stories.tsx"),
+
   };
 };
 
