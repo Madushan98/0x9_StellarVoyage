@@ -87,7 +87,9 @@ Follow these steps to get the Intergalactic Space Travel Booking Application up 
 
    ```bash
    npm install
-   expo start
+   npm start
+
+   You can use the mobile app to run theaplicaiton by scanning the QR Code
 
 ## Usage
 
