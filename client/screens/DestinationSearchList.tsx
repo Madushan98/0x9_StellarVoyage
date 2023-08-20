@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {View, Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 import CommonView from './CommonView';
 import {common} from '../config/style';
@@ -9,6 +9,10 @@ import { DestinationCard } from '../components/DestinationCard/DestinationCard';
 const DestinationSearchList = ({route, navigation}) => {
     const {destinations} = route.params;
 
+    useEffect(() => {
+        console.log(destinations)
+    }, [destinations])
+
     const destinationHandler = (item: Destination) => {
         navigation.navigate('FlightFilter', {
             destination: item
@@ -16,7 +20,9 @@ const DestinationSearchList = ({route, navigation}) => {
     }
 
     const renderItem = (item: Destination) => (
-        <TouchableOpacity onPress={destinationHandler}>
+        <TouchableOpacity onPress={(evt) => {
+            destinationHandler(item);
+        }}>
             <DestinationCard name={item.name} culture={item.culture} climate={item.climate} 
             touristAttractions={item.touristAttractions} planet="Earth" />
         </TouchableOpacity>    
@@ -30,7 +36,7 @@ const DestinationSearchList = ({route, navigation}) => {
             <View>
                 <FlatList
                     data={destinations}
-                    renderItem={renderItem}
+                    renderItem={({item}) => renderItem(item)}
                     keyExtractor={(item, index) => index.toString()}
                 />
             </View>

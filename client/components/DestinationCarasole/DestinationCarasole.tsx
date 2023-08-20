@@ -6,11 +6,6 @@ import { DestinationCard } from '../DestinationCard/DestinationCard';
 
 const DestinationCarousel = (destinations:Destination[]) => {
 
-    const data = [
-  { id: 1, climate: 'adadad' },
-  { id: 2, climate: 'adadad' },
-  { id: 3, climate: 'adadad' },
-];
 
    const renderItem = (item:Destination) => (
       <DestinationCard climate={item.climate} name={''} culture={''} touristAttractions={''} planet={''} />
@@ -18,8 +13,8 @@ const DestinationCarousel = (destinations:Destination[]) => {
 
   return (
     <Carousel
-      data={data}
-      renderItem={renderItem}
+      data={destinations}
+      renderItem={({item}) => renderItem(item)}
       sliderWidth={300}
       itemWidth={300}
     />
