@@ -16,6 +16,7 @@ import FlightSearchList from "./screens/FlighSearchtList";
 import FlightFilter from "./screens/FlightFilter";
 import Home from "./screens/Home";
 import SearchScreen from "./screens/Search";
+import Checkout from "./screens/Checkout";
 
 
 const Stack = createStackNavigator();
@@ -61,7 +62,7 @@ export const Layout = () => {
         },
       }}
       >{authState?.authenticated ? (
-        <Stack.Screen name="Main" component={BookFlight} />
+        <Stack.Screen name="Main" component={BottomBar} />
       ) : (
         <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
       )}
@@ -69,6 +70,7 @@ export const Layout = () => {
         <Stack.Screen name="EmailVerification" component={EmailVerification} />
         <Stack.Screen name="FlightFilter" component={FlightFilter} />
         <Stack.Screen name="FlightSearchList" component={FlightSearchList} />
+        <Stack.Screen name="Checkout" component={Checkout} />
       </Stack.Navigator>
     </NavigationContainer>
   );

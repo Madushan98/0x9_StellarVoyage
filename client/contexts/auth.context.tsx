@@ -67,9 +67,11 @@ export const AuthProvider = ({children}: any) => {
     const register = async (registerUser: RegisterUser) => {
         try {
             const result = await api.post('/auth/register', registerUser);
-
-            await SecureStore.setItemAsync('userEmail', JSON.stringify(result.data.email));
-            return result;
+            if (result.data.error) {
+                return {error: true, message: result.data.message};
+            }
+            await SecureStore.setItemAsync('userEmail', result.data.email);
+            return result.data;
 
         } catch (error) {
             return {error: true, message: (error as any).response.data.message};

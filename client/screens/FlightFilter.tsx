@@ -6,8 +6,9 @@ import {MainButton} from '../components/MainButton/MainButton';
 import CommonView from './CommonView';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import {api} from '../api/api';
+import { NavigationProps } from '../Models/Navigation';
 
-const FlightFilter = ({navigation}) => {
+const FlightFilter = ({ navigation }:NavigationProps) => {
     const [isAddDestinationModalVisible, setAddDestinationModalVisible] = useState(false);
     const [isAddDeparturenModalVisible, setAddDepartureModalVisible] = useState(false);
     const [isDatePickerVisible, setDatePickerVisible] = useState(false);
@@ -35,7 +36,7 @@ const FlightFilter = ({navigation}) => {
 
     const handleSearch = async () => {
         setLoading(true);
-        if(selectedFrom === null || selectedDestination === null || selectedDate === null) {
+        if(selectedFrom === null || selectedDestination === null) {
             alert('Please fill in all fields');
             return;
         }
@@ -45,9 +46,8 @@ const FlightFilter = ({navigation}) => {
             const searchCriteria: SearchFlightRequest = {
                 fromLocation: selectedFrom,
                 toLocation: selectedDestination,
-                departureDate: selectedDate,
             };
-            const response = await api.post('/flight/search', {searchCriteria});
+            const response = await api.post('/flight/search', searchCriteria)
             setLoading(false);
             // Navigate to flight list screen
             navigation.navigate('FlightSearchList', {
@@ -102,16 +102,10 @@ const FlightFilter = ({navigation}) => {
                     <Text style={[common.mainTitle, {color: 'white', marginBottom: 12}]}>Book Your Flight</Text>
                 </View>
                 <View style={[common.centerVertical, {height: '30%', justifyContent: 'space-around'}]}>
-                    <BookingDetailCard onPress={addDestination} title='From'
-                                       infomation={selectedDestination} iconName='airplane-outline'/>
-                    <BookingDetailCard onPress={addDeparture} title='Destination'
-                                       infomation={selectedFrom } iconName='planet-outline'/>
-                    <BookingDetailCard
-                        onPress={openDatePicker}
-                        title="Departure Date"
-                        infomation={selectedDate}
-                        iconName="calendar-outline"
-                    />
+                    <BookingDetailCard onPress={addDeparture} title='From'
+                                       infomation={selectedFrom} iconName='airplane-outline'/>
+                    <BookingDetailCard onPress={addDestination} title='Destination'
+                                       infomation={selectedDestination } iconName='planet-outline'/>
                 </View>
                 <View style={[common.centerVertical, {height: '30%', justifyContent: 'space-around'}]}>
                     <MainButton text="Search" onPress={handleSearch}/>
@@ -168,7 +162,7 @@ const FlightFilter = ({navigation}) => {
                         <Text style={common.modalHeaderText}>Select Departure</Text>
 
                         {destinations.map((destination, index) => (
-                            <TouchableOpacity
+                            <TouchableOpacity style={commonListTile.tileContainer}
                                 key={index}
                                 onPress={() => {
                                     // Handle destination selection
@@ -176,7 +170,7 @@ const FlightFilter = ({navigation}) => {
                                     closeAddDepartureModal();
                                 }}
                             >
-                                <Text>{destination}</Text>
+                                <Text style={commonListTile.tileText}>{destination}</Text>
                             </TouchableOpacity>
                         ))}
 

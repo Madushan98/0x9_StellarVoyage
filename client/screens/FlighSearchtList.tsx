@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList,TouchableOpacity ,StyleSheet } from 'react-native';
 import CommonView from './CommonView';
 import { common } from '../config/style';
 import { PricingCard } from '../components/PricingCard/PricingCard';
@@ -7,14 +7,20 @@ import { PricingCard } from '../components/PricingCard/PricingCard';
 const FlightSearchList = ({ route, navigation }) => {
   const { flightList } = route.params;
 
-  const renderItem = ({ item }) => (
-    <View style={{marginBottom:12,width:"100%"}}>
-        <PricingCard flightId={item.flightId} from={item.from}
-      to={item.to} departureDate={item.departureDate} arrivalDate={item.arrivalDate} 
-      returnDate={item.returnDate} travelMode={item.travelMode} 
-      flightMode={item.flightMode} price={item.price} />
-    </View>
-  );
+    const flightHandler = (item: FlightInfo) => {
+        navigation.navigate('Checkout', {
+            flight: item
+        });
+    }
+
+    const renderItem = (item: FlightInfo) => (
+        <TouchableOpacity onPress={flightHandler}>
+            <PricingCard flightId={item.flightId} from={item.from}
+                         to={item.to} departureDate={item.departureDate} arrivalDate={item.arrivalDate}
+                         returnDate={item.returnDate} travelMode={item.travelMode}
+                         flightMode={item.flightMode} price={item.price}/>
+        </TouchableOpacity>
+    );
 
   return (
     <CommonView>

@@ -16,6 +16,10 @@ const Login = ({navigation}:NavigationProps) => {
     const { onLogin } = useAuth();
 
     const handleLogin = async () => {
+        if (!email || !password) {
+            alert('Please fill in all fields');
+            return;
+        }
         const result = await onLogin!({ email, password });
         if (result?.error) {
             alert(result.message)
