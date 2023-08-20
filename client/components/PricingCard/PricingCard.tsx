@@ -2,9 +2,7 @@ import React from "react";
 import {Text, StyleSheet,Image,View } from "react-native";
 import color from "../../config/color";
 
-
-export const PricingCard = () => {
-
+export const PricingCard = ({flightId,flightMode,departureDate,arrivalDate,price}:FlightInfo) => {
     const timeComp=(title:string,date:string)=>{
         return(
             <View>
@@ -22,8 +20,8 @@ export const PricingCard = () => {
         </View>
         <View style={styles.detailBox}>
            <View style={{display:'flex',flexDirection:"column"}}>
-            {timeComp("Departure","2023/08/12 5.30 a.m")}
-            {timeComp("Arrival","2023/08/12 5.30 a.m")}
+            {timeComp("Departure",departureDate!)}
+            {timeComp("Arrival",arrivalDate!)}
            </View>
             <Text style={[styles.fontFamily,styles.Pricing]}>$ {9999}</Text>
         </View>
@@ -34,7 +32,7 @@ export const PricingCard = () => {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 32,
-    width:"40%",
+    width:"80%",
     paddingVertical: 12,
     backgroundColor: color.paperWhite,
     alignItems: "center",

@@ -2,7 +2,7 @@ import React from "react";
 import {Text, StyleSheet,Image,View } from "react-native";
 import color from "../../config/color";
 import planetImg from '../../config/image'
-import { Destination } from "../../types/Destination.types";
+import { Destination } from "../../types/destination.types";
 import planets from "../../config/planetIcon"
 import { IconButton } from "../IconButton/IconButton";
 import { common, commonFonts } from "../../config/style";

@@ -1,6 +1,7 @@
 export interface ButtonModel{
     text?:string,
     onPress?: ()=>void;
+    widthPercentage?:number,
 }
 
 export interface RoundButtonModel extends ButtonModel{

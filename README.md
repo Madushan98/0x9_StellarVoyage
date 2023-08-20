@@ -29,12 +29,12 @@ In a galaxy filled with diverse planets and cultures, the Intergalactic Space Tr
 
 - **Search and Book Flights**: Users can search for available flights between planets and book tickets for their desired travel dates.
 
-- **Personalized User Profiles**: Users can view and edit their profiles, including contact information and travel preferences.
-
-- **Secure Payment Gateway**: Integrated payment gateway ensures safe and secure transactions for booking payments.
+- **User Profiles**: Users can view and edit their profiles, including contact information and travel preferences.
 
 - **Booking Management**: Users can view their booking history, upcoming trips, and cancel bookings if needed.
 
+- **Continuous Integration and Deployment (CI/CD)**: The application's backend is integrated with a CI/CD pipeline using GitHub Actions. This automates the process of testing, building, and deploying the backend codebase to the production environment, enhancing efficiency and reducing manual errors.
+  
 
 ### Frontend Features
 
