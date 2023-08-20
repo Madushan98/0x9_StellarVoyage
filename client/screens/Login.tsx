@@ -26,8 +26,6 @@ const Login = ({navigation}:NavigationProps) => {
         }
     }
 
-    const oncange = () => { }
-
     return (
         <>
             <CommonView>
@@ -36,8 +34,8 @@ const Login = ({navigation}:NavigationProps) => {
                     <Text style={[{ color: "white" }]}>Hi Welcome Back</Text>
                 </View>
                 <View style={[common.centerVertical, { height: 150, justifyContent: "space-around" }]}>
-                    <UserInput onPress={()=>oncange()} lable='Email' onChange={(value) => setEmail(value)} />
-                    <UserInput  onPress={()=>oncange()} lable='password' onChange={(value) => setPassword(value)} />
+                    <UserInput  lable='Email' onChange={(value) => setEmail(value)} />
+                    <UserInput  lable='password' onChange={(value) => setPassword(value)} />
                 </View>
                 <View style={[common.centerHorizontal, { justifyContent: 'space-between' }]}>
                     <ToggleSwitch lable='Remember Me' />
@@ -48,7 +46,7 @@ const Login = ({navigation}:NavigationProps) => {
                     <Text style={[commonFonts.mulish, commonColor.white, { fontSize: 16, fontWeight: "500" }]}>OR</Text>
                     <ImageButton text='Login with Goole' icon={icon.GoogleIcon}></ImageButton>
                     <ImageButton text='Login with Facebook' icon={icon.FaceBookIcon}></ImageButton>
-                    <Text onPress={()=>navigation.navigate('Register')} style={[commonColor.white, commonFonts.mulish]}>Don't have an Account</Text>
+                    <Text onPress={()=>navigation.navigate('Register')} style={[commonColor.white, commonFonts.mulish]}>Don't have an Account? Sign Up</Text>
                 </View>
             </CommonView>
         </>

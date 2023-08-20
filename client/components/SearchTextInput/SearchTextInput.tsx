@@ -1,17 +1,17 @@
 import { View, Text, StyleSheet, TextInput } from "react-native";
-import { UserInputLableModel } from "../../Models/Input";
+import { UserInputLableModel, UserSearchlableModel } from "../../Models/Input";
 import Ionicons from "@expo/vector-icons/Ionicons"
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 
 
-export const SearchTextInput= ({onChange,lable}:UserInputLableModel) => {
+export const SearchTextInput= ({onChange,lable,onPress}:UserSearchlableModel) => {
     return (
         <View style={[styles.container]}>
             <Text style={[styles.text]}>{lable}</Text>
             <View style={{display:"flex",width:"100%",paddingHorizontal:12,borderRadius:32,backgroundColor:"white",flexDirection:"row",height:"100%",alignItems:"center"}}>
               <TextInput onChangeText={text=>onChange(text)} style={styles.input}/>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={onPress}>
                <Ionicons style={styles.icon} name="search-sharp"></Ionicons>
               </TouchableOpacity>
             </View>

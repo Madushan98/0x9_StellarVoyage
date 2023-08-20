@@ -11,5 +11,5 @@ export interface LoginUser {
 
 export interface EmailVerification {
   verificationCode: string;
-  userEmail: string ;
+  userEmail: string | null; 
 };

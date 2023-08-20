@@ -9,7 +9,7 @@ import { common, commonFonts } from "../../config/style";
 
 
 export const DestinationCard = ({climate,culture,name,planet,touristAttractions}:Destination) => {
-
+    let plane:string = planet.toLowerCase().replace(" ","");
     const detail=(title:string,infor:string)=>{
         return(
             <View style={styles.detailBox}>
@@ -23,12 +23,12 @@ export const DestinationCard = ({climate,culture,name,planet,touristAttractions}
   return (
     <View style={styles.container}>
         <View style={styles.titleContainer}>
-            <Image style={styles.planetImage} source={planets[planet.toLocaleLowerCase()]}/>
+            <Image style={styles.planetImage} source={planets[plane]}/>
             <Text style={[styles.title]}>{name}</Text>
         </View>
         <View style={styles.detailContainer}>
             <View style={styles.actionBox}>
-                <Image style={styles.destinationImg} source={planetImg.Titan}></Image>
+                <Image style={styles.destinationImg} source={planets[planets.Titan]}></Image>
                 <View style={{width:"100%", height:"50%",display:"flex",justifyContent:"center",alignItems:"center"}}>
                     <IconButton text="Book Now" icon={"chevron-forward-outline"}/>
                 </View>

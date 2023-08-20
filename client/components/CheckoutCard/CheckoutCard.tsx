@@ -51,7 +51,7 @@ export const CheckoutCard = () => {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 32,
-    width:"40%",
+    width:"90%",
     paddingVertical: 12,
     backgroundColor: color.paperWhite,
     alignItems: "center",

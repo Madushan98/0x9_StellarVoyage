@@ -39,7 +39,6 @@ export const AuthProvider = ({children}: any) => {
                 const userId = await SecureStore.getItemAsync('user').then((user) => {
                     return user ? JSON.parse(user).id : null;
                 });
-                
                 if (token) {
                     setAuthState({
                         token,
@@ -70,9 +69,8 @@ export const AuthProvider = ({children}: any) => {
             if (result.data.error) {
                 return {error: true, message: result.data.message};
             }
-            await SecureStore.setItemAsync('userEmail', result.data.email);
-            return result.data;
-
+            await SecureStore.setItemAsync('userEmail', registerUser.email);
+            return result;
         } catch (error) {
             return {error: true, message: (error as any).response.data.message};
         }
@@ -81,6 +79,7 @@ export const AuthProvider = ({children}: any) => {
     const verify = async (emailVerification: EmailVerification) => {
         try {
             const result = await api.post('/auth/verifyEmail', emailVerification);
+            console.log(result);
              setAuthState({
                 token: result.data.access_token,
                 userId: result.data.id,
@@ -100,14 +99,14 @@ export const AuthProvider = ({children}: any) => {
     const login = async (loginUser: LoginUser) => {
         try {
             const result = await api.post('/auth/login', loginUser);
+            api.defaults.headers.common['Authorization'] = `Bearer ${result.data.accessToken}`;
+            await SecureStore.setItemAsync('token', result.data.access_token);
+            await SecureStore.setItemAsync('user', JSON.stringify(result.data));
             setAuthState({
                 token: result.data.access_token,
                 userId: result.data.id,
                 authenticated: true,
             });
-            api.defaults.headers.common['Authorization'] = `Bearer ${result.data.accessToken}`;
-            await SecureStore.setItemAsync('token', result.data.access_token);
-            await SecureStore.setItemAsync('user', JSON.stringify(result.data));
             return result;
 
         } catch (error) {

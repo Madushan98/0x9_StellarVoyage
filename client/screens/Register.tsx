@@ -17,7 +17,6 @@ const Register = ({ navigation }:NavigationProps) => {
     const { onRegister } = useAuth();
 
     const handleRegister = async () => {
-        navigation.navigate('EmailVerification');
         if (!name || !email || !password || !confirmPassword) {
             setError('All fields are required');
             return;
@@ -28,15 +27,13 @@ const Register = ({ navigation }:NavigationProps) => {
             return;
         }
 
-        const result = await onRegister!({ name, email, password }).then((result) => {
+        const result = await onRegister!({ name, email, password })
             if (result?.error) {
-                setError(result.message);
+                alert(result.message);
+            }else{
+                navigation.navigate('EmailVerification');
             }
-            navigation.navigate('EmailVerification');
-        });
-        
-    
-    };
+};
 
     return (
         <>
@@ -49,11 +46,11 @@ const Register = ({ navigation }:NavigationProps) => {
                     <UserInput lable='Name' onChange={(value) => setName(value)} />
                     <UserInput lable='Email' onChange={(value) => setEmail(value)} />
                     <UserInput lable='password' onChange={(value) => setPassword(value)} />
-                    <UserInput lable='Cofirem Password' onChange={(value) => setConfirmPassword(value)} />
+                    <UserInput lable='Confirm Password' onChange={(value) => setConfirmPassword(value)} />
                 </View>
                 <View style={[common.centerVertical, { height: "30%", justifyContent: "space-around" }]}>
                     <MainButton text='SIGN UP' onPress={handleRegister} />
-                    <Text onPress={() => navigation.navigate('Login')} style={[commonColor.white, commonFonts.mulish]}>Already have an account?</Text>
+                    <Text onPress={() => navigation.navigate('Login')} style={[commonColor.white, commonFonts.mulish]}>Already have an account? Sign In</Text>
                 </View>
             </CommonView>
         </>
