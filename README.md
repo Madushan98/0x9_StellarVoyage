@@ -59,7 +59,7 @@ Follow these steps to get the Intergalactic Space Travel Booking Application up 
 - Node.js and Expo CLI (for React Native with Expo frontend)
 
 ### Installation Backend
-Backend Is Already Deloyed to the Difgital Ocean Droplet Using Github Action Ci/CD
+We have used CockroachDB Cloud Based Database. Backend Is Already Deployed to the Difgital Ocean Droplet Using Github Action Ci/CD
 1. Clone the repository:
 
    ```bash
