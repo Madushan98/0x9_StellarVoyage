@@ -15,12 +15,19 @@ const Home = ({navigation}:NavigationProps) => {
   const [destinations, setDestinations] = React.useState<Destination[]>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
   const [searchTextInput, setSearchTextInput] = React.useState<string>("");
+  const [user, setUser] = React.useState<any>(null);
 
   useEffect(() => {
         const fetchData = async () => {
             try {
                 const token = await SecureStore.getItemAsync('token');
-                api.defaults.headers.common['Authorization'] = `Bearer ${token}`;    
+                const id = await SecureStore.getItemAsync('user').then((user) => {
+                    return user ? JSON.parse(user).id : null;
+                });
+                api.defaults.headers.common['Authorization'] = `Bearer ${token}`; 
+                const userResponse = await api.get(`/user/${id}`);
+                setUser(userResponse.data.name);
+                console.log(user);
                 // Fetch all detination names
                 const response = await api.get('/destinations/all');
                 // let data = await JSON.parse(response.data)
@@ -51,7 +58,7 @@ const Home = ({navigation}:NavigationProps) => {
   return (
     <CommonView>
       <View style={[styles.profileContainer, common.centerEndHorizontal]}>
-        <Text style={[commonFonts.profile, commonColor.white]} >Hi Name !</Text>
+        <Text style={[commonFonts.profile, commonColor.white]} >Hi {user}!</Text>
         <ImageBackground
           source={image.Titan} // Replace with your image path
           style={styles.image}

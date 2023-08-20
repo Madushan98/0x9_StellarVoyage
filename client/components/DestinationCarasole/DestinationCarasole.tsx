@@ -1,31 +1,30 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
-import Carousel, { CarouselProps } from 'react-native-snap-carousel';
-import { DestinationCard } from '../DestinationCard/DestinationCard';
-import { common } from '../../config/style';
 import { Destination } from '../../types/destination.types';
+import Carousel from 'react-native-snap-carousel';
+import { DestinationCard } from '../DestinationCard/DestinationCard';
 
-
-interface carasolDataProp{
-  destinations:Destination[]
+interface DestinationCarouselProps {
+  destinations: Destination[];
 }
 
-const DestinationCarousel = ({destinations}:carasolDataProp) => {
-  let finalData:Destination[] = destinations.map((obj,index)=>({...obj,id:index+1}))
+const DestinationCarousel: React.FC<DestinationCarouselProps> = ({ destinations }) => {
+  const renderItem = (item: Destination) => (
+    <DestinationCard
+      climate={item.climate}
+      name={item.name}
+      culture={item.culture}
+      touristAttractions={item.touristAttractions}
+      planet={item.planet}
+    />
+  );
 
-   const renderItems = (item:any) => {
-      console.log(item);
-      return (<DestinationCard climate={item.climate} name={"tem.name"} culture={"item.culture"} touristAttractions={"asdas"} planet={"earth"} />)
-};
   return (
     <Carousel
-    layout={'stack'}
-      data={finalData}
-      contentContainerCustomStyle={{display:"flex",flexDirection:"row",justifyContent:"center",marginLeft:20,top:12}}
-      layoutCardOffset={12}
-      renderItem={renderItems}
-      sliderWidth={500}
-      itemWidth={370}
+      data={destinations}
+      renderItem={({ item }) => renderItem(item)}
+      sliderWidth={300}
+      itemWidth={300}
     />
   );
 };
