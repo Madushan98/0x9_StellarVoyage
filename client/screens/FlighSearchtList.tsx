@@ -8,10 +8,12 @@ const FlightSearchList = ({ route, navigation }) => {
   const { flightList } = route.params;
 
   const renderItem = ({ item }) => (
-    <PricingCard flightId={item.flightId} from={item.from}
-     to={item.to} departureDate={item.departureDate} arrivalDate={item.arrivalDate} 
-     returnDate={item.returnDate} travelMode={item.travelMode} 
-     flightMode={item.flightMode} price={item.price} />
+    <View style={{marginBottom:12,width:"100%"}}>
+        <PricingCard flightId={item.flightId} from={item.from}
+      to={item.to} departureDate={item.departureDate} arrivalDate={item.arrivalDate} 
+      returnDate={item.returnDate} travelMode={item.travelMode} 
+      flightMode={item.flightMode} price={item.price} />
+    </View>
   );
 
   return (
@@ -19,8 +21,9 @@ const FlightSearchList = ({ route, navigation }) => {
       <View style={[common.middleArea, common.topArea]}>
         <Text style={[common.mainTitle, { color: 'white', marginBottom: 12 }]}>Search</Text>
       </View>
-      <View >
+      <View style={common.centerVertical} >
         <FlatList
+          contentContainerStyle={common.centerVertical}
           data={flightList}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}

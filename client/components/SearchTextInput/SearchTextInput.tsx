@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet, TextInput } from "react-native";
-import { UserInputLableModel } from "../../Models/Input";
+import { SearchInputLableModel } from "../../Models/Input";
 import Ionicons from "@expo/vector-icons/Ionicons"
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 
 
-export const SearchTextInput= ({onChange,lable}:UserInputLableModel) => {
+export const SearchTextInput= ({onChange,lable}:SearchInputLableModel) => {
     return (
         <View style={[styles.container]}>
             <Text style={[styles.text]}>{lable}</Text>

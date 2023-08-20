@@ -63,7 +63,7 @@ export const Layout = () => {
       >{authState?.authenticated ? (
         <Stack.Screen name="Main" component={BookFlight} />
       ) : (
-        <Stack.Screen name="Login" options={{ headerShown: false }} component={SearchScreen} />
+        <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
       )}
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="EmailVerification" component={EmailVerification} />
