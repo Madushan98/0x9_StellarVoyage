@@ -91,7 +91,6 @@ const FlightFilter = ({ route,navigation }) => {
     };
 
     const handleDateConfirm = ({date}: any) => {
-        console.log("Selected date:", date);
         setSelectedDate(date);
         hideDatePicker();
     };
