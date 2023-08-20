@@ -64,7 +64,7 @@ const SearchScreen = ({ navigation }: NavigationProps) => {
                         data={desti}
                         renderItem={renderItems}
                     /> */}
-                    <ScrollView style={[{flex:1}]} contentContainerStyle={common.centerVertical}  showsVerticalScrollIndicator={false}>
+                    <ScrollView style={[{flex:1}]} contentContainerStyle={common.centerVertical}  >
                     {destinations.map((data:Destination,index)=>(
                         <View style={{marginBottom:16}} key={index} >
                           <DestinationCard{...data}/>
