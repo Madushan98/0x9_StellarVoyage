@@ -7,7 +7,7 @@ import { Destination } from '../types/destination.types';
 import { DestinationCard } from '../components/DestinationCard/DestinationCard';
 
 const DestinationSearchList = ({route, navigation}) => {
-    const {destinations} = route.params;
+    const {destinations,searchName} = route.params;
 
     useEffect(() => {
         console.log(destinations)
@@ -31,7 +31,7 @@ const DestinationSearchList = ({route, navigation}) => {
     return (
         <CommonView>
             <View style={[common.middleArea, common.topArea]}>
-                <Text style={[common.mainTitle, {color: 'white', marginBottom: 12}]}>Search Result</Text>
+                <Text style={[common.mainTitle, {color: 'white', marginBottom: 12}]}>Search Result for {searchName}</Text>
             </View>
             <View>
                 <FlatList
