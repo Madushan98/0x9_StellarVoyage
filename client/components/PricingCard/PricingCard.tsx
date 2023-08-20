@@ -23,7 +23,7 @@ export const PricingCard = () => {
         <View style={styles.detailBox}>
            <View style={{display:'flex',flexDirection:"column"}}>
             {timeComp("Departure","2023/08/12 5.30 a.m")}
-            {timeComp("Departure","2023/08/12 5.30 a.m")}
+            {timeComp("Arrival","2023/08/12 5.30 a.m")}
            </View>
             <Text style={[styles.fontFamily,styles.Pricing]}>$ {9999}</Text>
         </View>

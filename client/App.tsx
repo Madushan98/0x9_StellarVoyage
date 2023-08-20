@@ -12,7 +12,6 @@ import * as SplashScreen from 'expo-splash-screen';
 import Register from "./screens/Register";
 import EmailVerification from "./screens/EmailVerification";
 import Home from "./screens/Home";
-import SearchPage from "./screens/Search";
 import SearchScreen from "./screens/Search";
 
 const Stack = createStackNavigator();
@@ -60,7 +59,7 @@ export const Layout = () => {
       >{authState?.authenticated ? (
         <Stack.Screen name="Main" component={BottomBar} />
       ) : (
-        <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
+        <Stack.Screen name="Login" options={{ headerShown: false }} component={SearchScreen} />
       )}
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="EmailVerification" component={EmailVerification} />
