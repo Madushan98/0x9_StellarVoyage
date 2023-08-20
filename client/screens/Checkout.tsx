@@ -32,7 +32,7 @@ const Checkout = ({ route, navigation }) => {
           <Text style={[common.mainTitle, { color: 'white', marginBottom: 12 }]}>Checkout</Text>
       </View>
       <View style={[common.centerVertical, { height: "20%", justifyContent: "space-around" }]}>
-          <BasicCheckoutCard />
+          <CheckoutCard arrivalDate={''} departureDate={''} arrivalTime={''} departureTime={''} price={''} passenger={''} from={''} to={''} flightType={''} seat={''} flightClass={''} flightMode={''} />
         </View>
     <View style={[common.centerVertical, { height: 300, justifyContent: "space-around" }]}>
                     <MainButton text='Checkout' onPress={handleCheckout} />
