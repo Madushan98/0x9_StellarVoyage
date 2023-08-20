@@ -59,14 +59,14 @@ Follow these steps to get the Intergalactic Space Travel Booking Application up 
 - Node.js and Expo CLI (for React Native with Expo frontend)
 
 ### Installation Backend
-
+Backend Is Already Deloyed to the Difgital Ocean Droplet Using Github Action Ci/CD
 1. Clone the repository:
 
    ```bash
    git clone https://github.com/intergalactic-travel/booking-app.git
 
 2. cd backend
-
+    
     ```bash
     spring.datasource.url=jdbc:mysql://localhost:3306/intergalactic_db
     spring.datasource.username=your_db_username
