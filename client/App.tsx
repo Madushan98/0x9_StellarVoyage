@@ -14,6 +14,10 @@ import EmailVerification from "./screens/EmailVerification";
 import BookFlight from "./screens/FlightFilter";
 import FlightSearchList from "./screens/FlighSearchtList";
 import FlightFilter from "./screens/FlightFilter";
+import Home from "./screens/Home";
+import SearchPage from "./screens/Search";
+import SearchScreen from "./screens/Search";
+
 
 const Stack = createStackNavigator();
 
@@ -60,7 +64,7 @@ export const Layout = () => {
       >{authState?.authenticated ? (
         <Stack.Screen name="Main" component={BookFlight} />
       ) : (
-        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
       )}
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="EmailVerification" component={EmailVerification} />

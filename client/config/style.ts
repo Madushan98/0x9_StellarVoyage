@@ -61,24 +61,6 @@ export const  common = StyleSheet.create({
 
   });
 
-export const  commonColor = StyleSheet.create({
-    white: {
-      color:"white"
-    },
-    mainTitle:{
-        fontSize:32,
-        fontWeight:"700",
-        fontFamily:"Mulish"
-    }
-  });
-
-  export const commonFonts = StyleSheet.create({
-    mulish:{
-        fontFamily:"Mulish"
-    }
-  })
-
-
 export const commonListTile = StyleSheet.create({
     tileContainer: {
         // New style for the tile container
@@ -92,3 +74,27 @@ export const commonListTile = StyleSheet.create({
         fontSize: 16,
     },
 })
+export const commonColor = StyleSheet.create({
+  white: {
+    color: "white",
+  },
+});
+
+export const commonFonts = StyleSheet.create({
+  mulish: {
+    fontFamily: "Mulish",
+  },
+  monserrata: {
+    fontFamily: "Monserrata",
+  },
+  mainTitle: {
+    fontSize: 32,
+    fontWeight: "700",
+    fontFamily: "Mulish",
+  },
+  profile: {
+    fontSize: 40,
+    fontFamily: "Monserrata",
+    fontWeight: "700",
+  },
+});

@@ -1,6 +1,11 @@
 export interface UserInputModel{
-    lable:string,
+    
     onChange:(value:string)=>void
+}
+
+export interface UserInputLableModel extends UserInputModel{
+    lable:string,
+    onPress:()=>void
 }
 
 export interface SwitchModel{

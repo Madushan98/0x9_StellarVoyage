@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react-native";
 import { View } from "react-native";
 import { MainButton } from "./MainButton";
 
-const MyButtonMeta: ComponentMeta<typeof MainButton> = {
+const MainButtonMeta: ComponentMeta<typeof MainButton> = {
   title: "MainButton",
   component: MainButton,
   args: {
@@ -18,8 +18,8 @@ const MyButtonMeta: ComponentMeta<typeof MainButton> = {
   ],
 };
 
-export default MyButtonMeta;
+export default MainButtonMeta;
 
-type MyButtonStory = ComponentStory<typeof MainButton>;
+type MainButtonStory = ComponentStory<typeof MainButton>;
 
-export const Basic: MyButtonStory = (args) => <MainButton {...args} />;
+export const Basic: MainButtonStory = (args) => <MainButton {...args} />;
