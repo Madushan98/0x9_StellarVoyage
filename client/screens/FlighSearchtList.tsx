@@ -14,7 +14,7 @@ const FlightSearchList = ({route, navigation}) => {
     }
 
     const renderItem = (item: FlightInfo) => (
-        <TouchableOpacity onPress={flightHandler}>
+        <TouchableOpacity onPress={(evt) => {flightHandler(item);}}>
             <PricingCard flightId={item.flightId} from={item.from}
                          to={item.to} departureDate={item.departureDate} arrivalDate={item.arrivalDate}
                          returnDate={item.returnDate} travelMode={item.travelMode}
@@ -25,7 +25,7 @@ const FlightSearchList = ({route, navigation}) => {
     return (
         <CommonView>
             <View style={[common.middleArea, common.topArea]}>
-                <Text style={[common.mainTitle, {color: 'white', marginBottom: 12}]}>Search</Text>
+                <Text style={[common.mainTitle, {color: 'white', marginBottom: 12}]}>Flight Results</Text>
             </View>
             <View>
                 <FlatList

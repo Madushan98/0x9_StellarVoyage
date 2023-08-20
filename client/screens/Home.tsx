@@ -46,6 +46,7 @@ const Home = ({navigation}:NavigationProps) => {
     const destinationList = result.data;
     navigation.navigate('DestinationSearchList', {
       destinations: result.data,
+      searchName: searchTextInput
     });
   }
 
