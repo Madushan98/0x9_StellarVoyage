@@ -17,7 +17,6 @@ import FlightFilter from "./screens/FlightFilter";
 import Home from "./screens/Home";
 import SearchScreen from "./screens/Search";
 import Checkout from "./screens/Checkout";
-import LaunchPage from "./screens/LaunchPage";
 
 
 const Stack = createStackNavigator();
@@ -63,15 +62,15 @@ export const Layout = () => {
         },
       }}
       >{authState?.authenticated ? (
-        <Stack.Screen name="Main" component={LaunchPage} />
+        <Stack.Screen name="Main" component={BottomBar} />
       ) : (
-        <Stack.Screen name="Login" options={{ headerShown: false }} component={LaunchPage} />
+        <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
       )}
-        <Stack.Screen name="Register" component={LaunchPage} />
-        <Stack.Screen name="EmailVerification" component={LaunchPage} />
-        <Stack.Screen name="FlightFilter" component={LaunchPage} />
-        <Stack.Screen name="FlightSearchList" component={LaunchPage} />
-        <Stack.Screen name="Checkout" component={LaunchPage} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="EmailVerification" component={EmailVerification} />
+        <Stack.Screen name="FlightFilter" component={FlightFilter} />
+        <Stack.Screen name="FlightSearchList" component={FlightSearchList} />
+        <Stack.Screen name="Checkout" component={Checkout} />
       </Stack.Navigator>
     </NavigationContainer>
   );
