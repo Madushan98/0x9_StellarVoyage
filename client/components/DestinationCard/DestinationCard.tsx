@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Text, StyleSheet,Image,View } from "react-native";
 import color from "../../config/color";
 import planetImg from '../../config/image'
@@ -18,6 +18,11 @@ export const DestinationCard = ({climate,culture,name,planet,touristAttractions}
             </View>
         )
     }
+
+    useEffect(() => {
+      console.log("DestinationCard")
+      console.log({climate,culture,name,planet,touristAttractions})
+    }, [climate,culture,name,planet,touristAttractions])
 
 
   return (
